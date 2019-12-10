@@ -1,0 +1,387 @@
+\section{Дискреные системы с запаздыванием}
+Иногда удобно рассматривать $N_{t+1}=f(N_t,..,N_{t-\tau})$. Эквивалентная запись в виде многомерной системы:
+$$
+u_1(t)=N_t,u_2(t)=N_{t-1},\dots,u_{\tau+1}(t)=N_{t-\tau}\:\Rightarrow\:
+u_1(t+1)=f(u_1(t),\dots,u_{\tau+1}(t)),
+$$
+$$
+u_2(t+1)=u_1(t),\ u_3(t+1)=u_2(t),\dots,u_{\tau+1}(t+1)=u_{\tau}(t).
+$$
+\begin{definition}
+Для многомерной системы неподвижной точкой называется $u^*=(u_1^*,\dots,u_n^*)$, такая что 
+$$\begin{cases}
+u_1^* = f(u_1^*,\dots,u_n^*),\\
+u_2^*=u_1^*,\\
+\ \vdots\\
+u_{\tau+1}^*=u_{\tau}^*.
+\end{cases}$$
+Для системы с запаздыванием: $ u^*=f(u^*,\dots,u^*).$
+\end{definition}
+Исследуем на устойчивость: пусть $f(N_t,...,N_{t-\tau})\in C(\mathbb{R}^{\tau})$. Дадим всем точкам приращение:
+$$
+\begin{array}{c}
+u_1(t+1)=u^*+\Delta\,u_1(t+1)\\
+u_2(t+1)=u^*+\Delta\,u_2(t+1)\\
+\vdots\\
+u_{\tau}(t+1)=u^*+\Delta\,u_{\tau}(t+1)\\
+\end{array}
+$$ 
+$$
+u^*+\Delta\,u_1(t+1)=f\left(u^*+\Delta\,u_1(t),\dots,u^*+\Delta\,u_{\tau+1}(t)\right)=f(u^*,\dots,u^*)+\sum\limits_{i=1}^{\tau+1}\dfrac{\partial f}{\partial u_i}(u^*,\dots,u^*)\Delta\,u_i(t)+o(|\Delta\,u|)
+$$
+В первом приближении это линейная система $u(t+1)=Au(t)$.
+\begin{lemma}
+Собственное значение $A$ удовлетворяет $\mu^{\tau+1}=\sum\limits_{i=1}^{\tau}a_i\mu^{\tau-i}$.
+\end{lemma}
+\begin{proof}
+По индукции
+
+\underline{База:} $n=2$ 
+$$
+A=\begin{pmatrix}
+a_1 & a_2\\
+1 & 0
+\end{pmatrix},\qquad 
+\chi(\mu)=\begin{pmatrix}
+a_1-\mu & a_2\\
+1 & -\mu
+\end{pmatrix}
+\Rightarrow \mu^2=\mu a_1+a_2
+$$ 
+
+\underline{Переход:} $n=n-1$
+$$
+\left|
+\begin{matrix}
+a_0-\mu & a_1  & \dots & a_{\tau-1} & a_{\tau} \\
+1 		& -\mu & \dots &     0		& 0	  \\
+ \hdotsfor{5} \\
+0		& 0	   & \dots &  1	        & -\mu
+\end{matrix}
+\right| = -\mu\left(\mu^{\tau}-\sum\limits_{i=0}^{\tau-1}a_i\mu_i^{\tau-1-i}\right)+a_{\tau}
+$$
+\end{proof}
+Из леммы выше следует:
+\begin{enumerate}
+\item Характеристический многочлен $\mu^{\tau+1}=\sum\limits_{i=1}^{\tau}a_i\mu_i^{\tau-i}$.
+\item Если все $|\mu_i|<1,\: i=\overline{1,\tau+1}$, то неподвижная точка устойчива 
+\item Если существует $|\mu_i|>1$, то неподвижная точка неустойчива. 
+\end{enumerate}
+
+\underline{Общий случай:} $u_{t+1}=f(u_t),\ y_t=\left(u_1(t),\dots,u_n(t)\right)^T,\ f=(f_1,\dots,f_n),\ f:\mathbb{R}^n\rightarrow\mathbb{R}^n$.
+
+Матрица Якоби: 
+$$
+A=\left\|\dfrac{\partial f_i}{\partial u_k}\right\|_{u=u^*}=
+\begin{pmatrix}
+\dfrac{\partial f_1}{\partial u_1}(u^*) &\dots &\dfrac{\partial f_1}{\partial u_n}(u^*) \\
+\vdots &\ddots & \vdots \\
+\dfrac{\partial f_n}{\partial u_1}(u^*)&\dots&\dfrac{\partial f_n}{\partial u_n}(u^*)
+\end{pmatrix}
+$$
+\subsection{Падение и взлет численности математической модели популяции жука (tribolium)}
+У жуков три стадии развития. Обозначим фазы следующим образом:
+$$
+L\textbf{--личинка}\longrightarrow P\textbf{--куколка}\longrightarrow A\textbf{--взрослая особь}
+$$
+Запишем математическую интерпретацию каждой фазы:
+$$
+\begin{cases}
+L_{t+1}=bA_t,  \\
+P_{t+1}=(1-\eta_l)L_t,\quad &\text{$\eta_l$--смертность L}\\
+A_{t+1}=(1-\eta_p)P_t + (1-\eta_A)A_t,\quad &\text{$\eta_p,\ \eta_A$--смертность P и A}. 
+\end{cases}
+$$
+$$
+A=
+\begin{pmatrix}
+0 & 0 & b \\
+1-\eta_l & 0 & 0 \\
+0 & 1-\eta_p & 1-\eta_A 
+\end{pmatrix}
+$$
+\begin{multline*}
+\left|A-\mu\,E\right| = 
+\left|
+\begin{matrix}
+-\mu & 0 & b \\
+1-\eta_l & -\mu & 0 \\
+0 & 1-\eta_p & 1-\eta_A -\mu
+\end{matrix}
+\right| =
+\mu^2(1-\eta_A-\mu)+b(1-\eta_p)(1-\eta_l) =\\
+= \mu^3 - \mu^2\underbrace{(1-\mu-\eta_A)}_{<1} - b\underbrace{(1-\eta_p)}_{<1}\underbrace{(1-\eta_l)}_{<1}
+\end{multline*}
+Поскольку $b > 1$, то неподвижная точка $(0,0,0)$ неустойчива.
+
+С учетом каннибализма модель можно  описать так:
+$$
+\begin{cases}
+L_{t+1}=bA_te^{-C_{ea}A_t-C_{al}L_t},  \\
+P_{t+1}=(1-\eta_l)L_t,\\
+A_{t+1}=(1-\eta_p)P_t e^{-C_{pa}A_t} + (1-\eta_A)A_t. 
+\end{cases}
+$$
+Причем $C_{ea}=0.009,C_{al}=0.012,C_{pa}=0.004,\eta_l=0.267,\eta_p=0,\eta_A=0.0036,b=7.48$
+\section{Непрерывные системы}
+$
+\begin{cases}
+\dfrac{dx_i}{dt}=f_i(x),\quad i=\overline{1,n},\quad x=(x_1,x_2,...,x_n)\in\Omega\subset\mathbb{R}^n\\
+x_i(0)=x_i^0
+\end{cases}$ --- автономная система.\\
+
+Будем называть $\Omega$  фазовым пространством, а множество $\{x(t,x^0)\}$ -- фазовой кривой, и также будем считать, что $f\in C^{\infty}(\Omega)$.  
+\subsection{Свойства автономных систем}
+Запишем еще раз вид автономной системы:
+\begin{equation}\label{ch2.avs}
+\begin{cases}
+\dfrac{dx}{dt}==f(x),\quad x\in D\subset\mathbb{R}^n,\\
+x(0)=x^0.
+\end{cases}
+\end{equation}
+\begin{enumerate}
+\item \textit{Если $x=\psi(t)$ удовлетворяет \ref{ch2.avs}, $\psi$ -- гладкая, то $\overline{x}=\psi(t)+C$ --- тоже решение $\forall C=\const$}. 
+\begin{proof}
+$\dfrac{d\overline{x}}{dt}=\dfrac{d\psi(t+C)}{dt}=\dfrac{\psi(t+C)}{d(t+C)}=f(\psi(t+C))$, т.к. $\dfrac{d\psi}{dt}=f(\psi(t))$
+\end{proof}
+\item  \textit{Фазовые траектории либо не имеют общих точек, либо совпадают.}
+\begin{proof}
+Пусть $x^0\in\mathbb{R}^n$ -- точка, через которую проходят две фазовые кривые $\Rightarrow \exists x_1=\varphi(t;x^0),\ x_2=\psi(t;x^0)$ -- решения системы: $\exists\: t_1,t_2:\varphi(t;x^0)=\psi(t;x^0)$.
+
+Проектируем $x_1,x_2$ на фазовую плоскость так, чтобы они пересеклись в $x^0$. Пусть теперь $\chi(t;x^0)=\varphi(t+(t_1-t_2);x^0)$, тогда $\chi$ является решением по первому свойству.
+
+$\chi(t_2;x^0)=\varphi(t_1;x^0)=\psi(t_2;x^0)\Rightarrow$ в точке $t_2$ 
+$\chi$ и $\psi$ проходят через $x^0\Rightarrow$ по теореме о единственности кривые совпадают, значит $\varphi=\psi$.  
+\end{proof}
+\item \textit{Точка $a\in D\subset\mathbb{R}^n$ называется неподвижной точкой, если $f_i(a)=0,i=1,2,...,n \Rightarrow$ неподвижная точка является фазовой траекторией:}
+$$
+x_i=a_i,\quad \dfrac{dx_i}{dt}=0,\quad f_i(a)=0.
+$$
+\item \textit{Всякая фазовая траеткория автономной динамической системы может принадлежать одному из трех типов кривых: гладкая кривая без самопересечений, цикл, точка.}
+\item \textit{Если фазовая траектория -- цикл, то отвечающее ей решение периодическая функция.}
+\begin{proof}
+Пусть $\dfrac{dx_i}{dt}=f_i(x),\ i=\overline{1,n},\ x_i(0)=a_i$. Тогда $x=\psi(t),\ a=\psi(0)$. 
+$$
+dS=\sqrt(dx_1^2+...+dx_n^2) \Rightarrow \dfrac{dS}{dt}=\sqrt{\sum\limits_{i=1}^{n}\dfrac{dx_i}{dt}^2}=\sqrt{\sum\limits_{i=1}^{n}f_i^2}=|f(\psi(t))|
+$$
+Получили, что $dS=|f(\psi(t)|dt$, длина:
+$$
+l(t)=\int\limits_{0}^{t}ds=\int\limits_{0}^{t}|f(\psi(t))|dt\geqslant\,mt.
+$$ 
+Неподвижная точка $(|f(\psi(t))|=0)\notin\sum$, т.к. это противоречило бы свойству 2, то есть $|f(\psi(t))| \neq 0, x\in\sum;\ m\leqslant|f(\psi(t))|\leqslant M,\ m > 0$. 
+
+ 
+Пусть $L$ -- длина замкнутой фазовой траектории. Имеем: $l(t)$  возрастает, $l(t)\leqslant\,L$. Тогда 
+$$
+\exists\,T:l(T)=L\Rightarrow L = \int\limits_{0}^{T}|f(\psi(t))|dt
+$$
+\end{proof}
+
+Рассмотрим следующий пример:
+
+$
+\begin{cases}
+\dot{x_1} = x_2\\
+\dot{x_2} = -x_1
+\end{cases}\Rightarrow
+\dfrac{dx_1}{dx_2}=-\dfrac{x_2}{x_1}\Rightarrow
+x_1^2+x_2^2 = R^2.
+$
+
+$\int\limits_{0}^{T}\sqrt{x_1^2+x_2^2}dt=\int\limits_{0}^{T}Rdt=RT\Rightarrow\,2\pi R=RT\Rightarrow T=2\pi.$
+\item \textit{Групповое свойство}
+
+$
+\begin{cases}
+\dfrac{dx}{dt}=f(x),\quad x\in D\subset\mathbb{R}^n,\\
+x(0)=x^0.
+\end{cases}
+\qquad x=x(t;x^0)$  -- решение 
+
+Пусть $t_1,t_2>0\Rightarrow\,x(t_1+t_2;x_0)=x(t_1;x(t_2,x^0))=x(t_2;x(t_1,x^0))$.
+\begin{proof} Рассмотрим
+$$
+\begin{array}{rcl}
+\varphi_1(t)&=x(t;x(t_1;x^0)) \qquad \varphi_1(0)&=x(0;x(t_1;x^0)) = x(t_1;x^0), \\
+\varphi_2(t)&=x(t+t_1;x^0) 	 \qquad \varphi_2(0)&= x(t_1;x^0). 
+\end{array}
+$$
+Получаем, что решения совпадают при $t=0\Rightarrow$ совпадут при $t=t_2$, в силу единственности
+$$x(t_2;x(t_1,x^0))=x(t_1+t_2;x^0)$$ 
+\end{proof}
+\item \textit{Гладкая невырожденная замена переменных}
+
+$\dfrac{dx_i}{dt}=f_i(x_1,...,x_n), x\in D\subset\mathbb{R}^n,\ x_i=\psi_i(y_1,...,y_n)$
+
+$
+\dfrac{dx_i}{dt}=\sum\limits_{k=1}^{n}\dfrac{\partial \psi_i}{\partial y_k}\dfrac{dy_k}{dt}=f(\psi(y_1,...,y_n))
+$
+$$
+J=
+\begin{pmatrix}
+\dfrac{\partial \psi_1}{\partial y_1}\ldots\dfrac{\partial \psi_1}{\partial y_n}\\
+\ddots\\
+\dfrac{\partial \psi_n}{\partial y_1}\ldots\dfrac{\partial \psi_n}{\partial y_n}
+\end{pmatrix}
+$$
+Пусть $\exists\left(\dfrac{\partial x}{\partial y}\right)^{-1}\Rightarrow
+\dfrac{dx}{dt}=\left(\dfrac{\partial x}{\partial y}\right)\dfrac{dy}{dt}=f(\psi(y)),\quad \dfrac{dy}{dt} = \left(\dfrac{\partial x}{\partial y}\right)^{-1}f(\psi(y))
+$
+\end{enumerate}
+\begin{theorem}[Теорема о выпрямлении векторного поля]
+Пусть $a$ не особая точка динамической системы
+$$
+\dfrac{dx_i}{dt}=f_i(t),\ i=1,2,...,n
+$$
+Тогда в достаточно малой окрестности точки $a$, сущесвует невырожденная замена переменных $x_i=\psi_i(y_1,...,y_n),\ i=1,2,...,n$, которая переводит систему в систему вида:
+$$
+\dfrac{dy_1}{dt}=0,\quad \dfrac{dy_2}{dt}=0,\ \ldots\ ,\dfrac{dy_{n-1}}{dt}=0,\quad \dfrac{dy_n}{dt}=1.
+$$
+\end{theorem} 
+\begin{proof}
+Не ограничивая общности, будет полагать $|f_n(a)|\neq\,0$, т.е. $f_n(a_1,\ldots,a_n)$ . Рассмотрим задачу Коши:
+$$
+\begin{cases}
+\dfrac{dx_i}{dt}=f_i(x_1,\ldots,x,_n)\\
+x_1(0)=\xi_1,\ldots,x_{n-1}(0)=\xi_{n-1}, x_n(0)=a_n
+\end{cases}
+$$
+Обозначим за $a'$ и $\xi'$
+$$
+a'=(a_1,\ldots,a_{n-1}),\quad \xi'=(\xi_1,\ldots,\xi_{n-1})\in U_{a'}
+$$
+Для всех $\xi'$ сопоставим соответствующую траекторию, т.е. $\xi'\longleftrightarrow \psi(t;\xi')=x(t)$. Пусть $y_1=\xi_1,\ldots,y_{n-1}=\xi_{n-1},y_n=t$ и сделаем следующую замену: $x(t)=\psi(y_n,y'),\ y'=(y_1,\dots,y_{n-1})$. 
+
+Проверим, что такая замена переменных невырожденная. В силу задачи Коши имеем:
+$$
+\begin{array}{ll}
+\psi_i(0;\xi')=\psi_i(0,y')=\xi_i,\quad i=1,\dots,n-1\\
+\psi_n(0;\xi')=\psi(0,y')=a_n
+\end{array}
+$$
+$$
+\begin{array}{ll}
+\dfrac{\partial\psi_i}{\partial y_j}=\dfrac{\partial\psi(0;\xi')}{\partial\xi_j}=\delta_{ij}=\begin{cases} 1,i=j\\0,i\neq\,j\end{cases}\\
+\dfrac{\partial\psi_n}{\partial y_k}=0,\quad \dfrac{\partial \psi_n}{\partial y_n}=\dfrac{d\psi_n}{dt}=f_n(a)\neq 0
+\end{array}
+$$
+
+$$
+J=
+\begin{pmatrix}
+1 & 0 & \dots & 0 & * \\
+0 & 1 &  \dots &  0 & * \\
+\vdots &\vdots & \ddots & \vdots& \vdots\\
+0  & 0 &\dots  & 1 & *\\
+0 & 0 & \dots & 0 & f_n(a)
+\end{pmatrix}\Rightarrow \exists\ J^{-1}ю
+$$
+\end{proof}
+
+Таким, образом структура фазовой траектории в окрестности любой точки, не являющейся положением равновесия, тривиальна. При подходящем выборе координат фазовая траектория представляет собой пучок параллельных прямых.
+\subsection{Теорема Лиувилля о скорости изменения фазового объема}
+\begin{equation}\label{ch2.eq1}
+\begin{array}{rcl}
+\dfrac{dx_i}{dt}=f(x),\quad &x\in\Omega\subset\mathbb{R}^n\quad &D_t=\{x=x(t;y)\ |\ y\in D_0\} \\
+x(0)=y,\quad &y\in D_0\subset\Omega\quad &V_0=|D_0|,\ V_t=|D_t|
+\end{array}
+\end{equation}
+Рассмотрим связь $x=x(t;y)$. Введем матрицу
+$$
+\left(\dfrac{\partial x}{\partial y}\right) = 
+\begin{pmatrix}
+\dfrac{\partial x_1(t;y)}{\partial y_1} & \dots & \dfrac{\partial x_1(t;y)}{\partial y_n}\\
+& \ddots & \\
+\dfrac{\partial x_n(t;y)}{\partial y_1} & \dots & \dfrac{\partial x_n(t;y)}{\partial y_n}
+\end{pmatrix}
+$$
+где $\dfrac{\partial x_i(t;y)}{\partial y_j}$ -- матрица чувствительности компонент к изменению начальных данных. Введем также матрицу Якоби
+$$
+\left(\dfrac{\partial f}{\partial x}\right) = 
+\begin{pmatrix}
+\dfrac{\partial f_1}{\partial x_1} & \dots & \dfrac{\partial f_1}{\partial x_n}\\
+& \ddots & \\
+\dfrac{\partial f_n}{\partial x_1} & \dots & \dfrac{\partial f_n}{\partial x_n}
+\end{pmatrix}
+$$
+\begin{lemma}[Уравнение в вариацях]\label{ch2.lem1}
+Пусть задано (\ref{ch2.eq1}), тогда справедливо следующее матричное уравнение
+\begin{equation}\label{ch2.eq2}
+\dfrac{d}{dt}\left(\dfrac{\partial x(t;y)}{\partial y}\right) = \left(\dfrac{\partial f(x)}{\partial x}\right)\left(\dfrac{\partial x(t;y)}{\partial y}\right)
+\end{equation}
+\end{lemma}
+\begin{proof}
+$$
+\dfrac{d}{dt}\dfrac{\partial x_k(t;y)}{\partial y_i}=\dfrac{\partial}{\partial y_i}\dfrac{d}{dt}\left(x_k(t;y)\right)= \dfrac{\partial}{\partial y_i}f_k(x(t;y)) = \sum\limits_{s=1}^{n}\dfrac{\partial f_k}{\partial x_s}\dfrac{\partial x_s(t;y)}{\partial y_i}.
+$$
+Полученное выражение и есть покомпонентная запись (\ref{ch2.eq2}).
+\end{proof}
+\begin{lemma}[Лиувилля о дифференцировании определителя]\label{ch2.lem2}
+Пусть имеется матрица $A(t)=\|a_{ij}(t)\|$, тогда 
+\begin{equation}\label{ch2.eq3}
+\dfrac{d}{dt}|A(t)|=|A(t)|\tr\left(\dfrac{dA(t)}{dt}A^{-1}(t)\right)
+\end{equation}
+\end{lemma}
+\begin{proof}
+
+Пусть $a_{ij}(t+\Delta\,t)=a_{ij}(t)+a'_{ij}\Delta\,t + o(\Delta\,t)$,
+$\dfrac{dA}{dt}=\|a'_{ij}(t)\|,\ i,j=\overline{1,n}$
+
+Обозначим $B=(\dfrac{dA}{dt}A^{-1})=b_{ij},\:i,j=\overline{1,n}$
+$$
+|E+B\Delta\,t|=
+\left|
+\begin{matrix}
+1+b_{11}\Delta\,t & \dots & b_{1n}\Delta\,t\\
+\vdots & \ddots &\vdots\\
+b_{n1}\Delta\,t & \dots & 1+b_{nn}\Delta\,t
+\end{matrix}
+\right|
+$$
+Тогда запишем
+\begin{multline*}
+|A(t+\Delta\,t)=|A(t)+\dfrac{dA}{dt}\Delta\,t + o(\Delta\,t)|=|E+\Delta\,t\dfrac{dA}{dt}A^{-1}(t)+o(\Delta\,t)A(t)|=\\
+=|E+\Delta\,t\underbrace{(\dfrac{dA}{dt}A^{-1}(t)}_{B(t)}+o(\Delta\,t)||A(t)| = (1+\Delta\,t\underbrace{(b_{11}+\dots+b_{nn})}_{\tr\:B}+o(\Delta\,t))|A(t)|
+\end{multline*}
+Получаем
+$$
+\dfrac{|A(t+\Delta\,t)|-|A(t)|}{\Delta\,t} = \dfrac{|A(t)|\:\tr\left(\dfrac{dA}{dt}A^{-1}(t)\right)\Delta\,t+o(\Delta\,t)}{\Delta\,t}.
+$$
+Полученная дробь сходится к (\ref{ch2.eq3}).
+\end{proof}
+\begin{theorem}[Лиувилля]
+Пусть задано (\ref{ch2.eq1}) $\Rightarrow\ \dfrac{dV_t}{dt}=\displaystyle\int\limits_{D_t}^{}divf(x)dx_t$.
+
+$div(\underbrace{f_1(x),\dots,f_n(x)}_{\textit{вектор}})=\underbrace{\sum\limits_{i=1}^{n}\dfrac{\partial f_i(x)}{\partial x_i}}_{\textit{скаляр}}$
+\end{theorem}
+\begin{proof}
+$$
+dx_t=dx_1(t;y)\dots\,dx_n(t;y)=\{x_1(t;y)\dots\,x(t;y)\rightarrow y_1\dots\,y_n\}=\left|\dfrac{\partial x(t;y)}{\partial y}\right|dy_1\dots\,dy_n
+$$
+Выражение для $V_t$ перепишется следующим образом:
+$$
+V_t=\displaystyle\int\limits_{D_t}^{}dx_1(t;y)\dots\,dx_n(t;y)=\displaystyle\int\limits_{D_0}^{}\left|\dfrac{\partial x(t;y)}{\partial y}\right|dy_1\dots\,dy_n\
+$$
+
+\begin{multline*}
+\dfrac{dV_t}{dt}=\displaystyle\int\limits_{D_0}^{}\dfrac{d}{dt}\left|\dfrac{\partial x(t;y)}{\partial y}\right|dy_1\dots\,dy_n=\{\textit{лемма \ref{ch2.lem2}}\}=
+\displaystyle\int\limits_{D_0}^{}\tr
+\left(
+\dfrac{d}{dt}
+\left(\dfrac{\partial x(t;y)}{\partial y}\right)
+\left(\dfrac{\partial x(t;y)}{\partial y}\right)^{-1}
+\right)\cdot\\
+\cdot\left(\dfrac{\partial x(t;y)}{\partial y}\right)dy=
+\{\textit{лемма \ref{ch2.lem1}}\}=
+\displaystyle\int\limits_{D_0}^{}\tr
+\left(
+\dfrac{\partial f}{\partial x}
+\left(\dfrac{\partial x(t;y)}{\partial y}\right)
+\left(\dfrac{\partial x(t;y)}{\partial y}\right)^{-1}
+\right)
+\left(\dfrac{\partial x(t;y)}{\partial y}\right)dy=\\
+=\displaystyle\int\limits_{D_t}^{}\tr\left(\dfrac{\partial f}{\partial x}\right)dx_t=
+\displaystyle\int\limits_{D_t}^{}\sum\limits_{i=1}^{n}\left(\dfrac{\partial f_i}{\partial x_i}\right)dx_t=
+\displaystyle\int\limits_{D_t}^{}div f(x)dx_t
+\end{multline*}
+\end{proof}
