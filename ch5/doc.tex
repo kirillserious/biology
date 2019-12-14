@@ -1,0 +1,456 @@
+\section{Теорема Ляпунова--Пуанкаре об устойчивости о первому приближению}
+
+
+Мы рассматриваем следующую систему и точку равновесия
+\begin{equation}\label{eq:ch5.main}
+        \begin{cases}
+                \dot x = f(x),\\
+                x(0) = x^0,\, x \in D.
+        \end{cases}
+\qquad
+        f(a) = 0,\,a \in D.
+\end{equation}
+Каждую компоненту $f$ можно разложить в окрестности неподвидной точки $a$ в вид
+$$
+        f_i(x) = f_i(a) + \sum_{k=1}^n \frac{\partial f_i}{\partial x_k}(a)(x_i - a_i) + \overline{o}(\rho),
+\quad
+        \mbox{где } \rho = \sqrt{\sum_{i = 1}^n |x_i - a_i|^2}.
+$$
+Вспомнив, что значение функции $f$ в неподвижной точке равно нулю, а также сделав замену переменной получим
+$$
+        \frac{dy}{dt} = \left.\left(
+\frac{\partial f}{\partial x}
+        \right)\right|_{x = a}\cdot y + \overline{o}(\rho),
+\quad
+        y = x - a.
+$$
+\begin{remark}
+        В этом разделе мы обозначаем через $\frac{\partial f}{\partial x}$ следующую матрицу:
+$$
+\frac{\partial f}{\partial x}
+=
+        \begin{pmatrix}
+\frac{\partial f_1}{\partial x_1}
+& \ldots &
+\frac{\partial f_1}{\partial x_n}
+\\
+\vdots & \ddots & \vdots \\
+\frac{\partial f_n}{\partial x_1}
+& \ldots &
+\frac{\partial f_n}{\partial x_n}
+        \end{pmatrix}.
+$$
+\end{remark}
+
+\begin{lemma}
+        Пусть $A$ --- матрица с жордановыми клетками, тогда для любого $\varepsilon > 0$ найдется такая матрица $T_\varepsilon$, что
+$$
+        T_\varepsilon^{-1} A T_\varepsilon = \Lambda + B_\varepsilon,
+\qquad
+        \mbox{где } |b_{ij}| < \varepsilon.
+$$
+\end{lemma}
+\begin{proof}
+        Из курса <<Линейной алгебры>> знаем, что существует матрица $P$ такая, что
+$$
+        P^{-1} A P = J = 
+        \begin{pmatrix}
+\boxed{J_1} &&\\
+&\ddots&\\
+&&\boxed{J_m}
+        \end{pmatrix}.
+$$
+
+Теперь рассмотрим следующие матрицы:
+$$
+        \mbox{dim}\,J_k = k\;:\;
+        J_k = \begin{pmatrix}
+\lambda_k & 1 &&& \\
+&\lambda_k & 1 && \\
+&&\ddots&\ddots&\\
+
+&&&\lambda_k
+        \end{pmatrix},
+\quad
+        R_k = \mbox{diag}(a_1,\ldots,a_k).
+$$
+        \begin{example}
+Рассмотрим частный случай перемножения матриц для $k = 3$.
+$$
+        R^{-1}_3 J_3 R_3 = 
+        \begin{pmatrix}
+\lambda_3 & r_1^{-1}r_2 & 0 \\
+0 & \lambda_3 & r_2^{-1}r_3 \\
+0 & 0 & \lambda_3
+        \end{pmatrix}
+$$
+В таком случае, чтобы удовлетворить условию леммы, достаточно решить систему
+$$
+        \begin{cases}
+r_1^{-1} r_2 = \varepsilon \\
+r_2^{-1} r_3 = \varepsilon
+        \end{cases}
+$$.
+        \end{example}
+
+В общем случае получается так же, а значит
+$$
+        R_k^{-1} J_k  R_k = \Lambda_k + B_k^\varepsilon.
+$$
+
+Теперь можем построить матрицу 
+$$
+        T_\varepsilon = PR,
+\quad
+        \mbox{где }R = 
+        \begin{pmatrix}
+\boxed{R_1} && \\
+&\ddots& \\
+&&\boxed{R_m}
+        \end{pmatrix}.
+$$
+И получить
+$$
+        T_\varepsilon^{-1} A T_\varepsilon
+=
+        (PR)^{-1} A (PR)
+=
+        R^{-1}P^{-1}APR
+=
+        R^{-1}JR
+=
+        \Lambda + B_\varepsilon. 
+$$
+\end{proof}
+
+\begin{lemma}
+        Линейная система $\dot x = Ax$ является ассимптотически устойчивой тогда и только тогда, когда все вещественные части собственных значений матрицы $A$ меньше нуля.
+\end{lemma}
+\begin{proof}
+        Для диагональной матрицы $A$ очевидно, поэтому рассмотрим недиагональную матрицу.
+$$
+        \dot x = Ax,\;x = T_\varepsilon y
+\quad\Longrightarrow\quad
+         T_\varepsilon \dot y = A T_\varepsilon y,\;
+         \dot y = ( T_\varepsilon^{-1} A  T_\varepsilon) y = \Lambda y +  B_\varepsilon y.
+$$
+$$
+        V(y) = \sum_{k = 1}^n |y_k|^2 = \langle y,\,\overline y \rangle.
+$$
+\begin{multline*}
+        \dot V(y) = \frac{d}{dt}\langle y,\,\overline y \rangle = 
+        \left\langle \frac{dy}{dt},\,\overline y \right\rangle + \left\langle y, \, \frac{d\overline y}{dt}\right\rangle 
+        =\\=
+        \langle (\Lambda + B_\varepsilon) y ,\,\overline y \rangle + \langle y,\,\overline{(\Lambda + B_\varepsilon) y}\rangle
+        =
+        \underbrace{\langle(\Lambda + \overline{\Lambda})y,\,\overline y\rangle}_{J_1} + \underbrace{\langle B_\varepsilon y,\, \overline y \rangle + \langle  y,\, B_\varepsilon\overline y \rangle}_{J_2}.
+\end{multline*}
+Теперь рассмотрим каждый из кусочков по отдельности:
+\begin{multline*}
+        J_1 = \langle(\Lambda + \overline{\Lambda})y,\,\overline y\rangle = 2\sum_{i = 1}^n\langle\mbox{Re}\,\lambda_iy_i,\,\overline y_i\rangle \leqslant
+\\ \{\mbox{ Если Re$\,\lambda_i \leqslant -\alpha < 0$ }\}
+\\
+        \leqslant
+        -2\alpha\sum_{i=1}^ny_i\overline y_i = -2\sum_{i=1}^n|y_i|^2 = -2\alpha V(y).
+\end{multline*}
+\begin{multline*}
+        J_2^1
+=
+        \langle
+          B_\varepsilon y,\,
+          \overline y
+        \rangle
+\leqslant
+        |\langle
+          B_\varepsilon y,\,
+          \overline y
+        \rangle|
+=
+        \left|
+          \sum_{i,j=1}^n
+            b_{ij}
+            y_i
+            \overline y_j
+        \right|
+\leqslant
+        \sum_{i,j=1}^n
+          |b_{ij}|
+          |y_i|
+          |\overline y_j|
+\leqslant
+        \varepsilon
+        \sum_{i,j=1}^n
+          |y_i|
+          |\overline y_j|
+=\\=
+        \varepsilon
+        \left(
+          \sum_{i = 1}^n
+            |y_i|^2
+        \right)
+\leqslant 
+        \{\mbox{ Неравенство К.-Б. }\}
+\leqslant
+        \varepsilon
+        n
+        \sum_{i=1}^n
+          |y_i|^2
+=
+        \varepsilon
+        n
+        V(y).
+\end{multline*}
+Тогда получается, что
+$$
+        \dot V(y)
+\leqslant
+        -
+          2 \alpha V(y)
+        +
+          2 \varepsilon n V(y)
+=
+        2 (-\alpha + \varepsilon n)
+        V(y)
+<       0,
+\quad
+        \mbox{при }
+        \varepsilon
+<
+        \nicefrac{\alpha}{n}.     
+$$
+Последнее выражение равно нулю только в случае $y = 0$. Тогда по 2-й теореме Ляпунова лемма доказана.
+\end{proof}
+
+\begin{theorem}[Ляпунов--Пуанкаре]
+        Положение равновесия \eqref{eq:ch5.main} ассимптотически устойчиво тогда и только тогда, когда все вещественные части собственных значений матрицы
+$
+        \left.\left(
+          \frac
+            {\partial f}
+            {\partial x}
+        \right)\right|_{x = a}
+$
+        отрицательны.
+\end{theorem}
+\begin{proof}
+        Ешё раз напомним, что у нас получилось:
+$$
+        \frac
+          {dx}
+          {dt}
+=
+          \left.\left(
+            \frac
+              {\partial f}
+              {\partial x}
+          \right)\right|_{x = a}
+          \cdot
+          x
+        +
+          g(x),
+\qquad
+        \mbox{где }
+        \lim\limits_{\|x\|\to 0}
+          \frac
+            {\|g(x)\|}
+            {\|x\|}
+=
+        0,
+\;
+        \|x\|
+=
+        \sqrt{x_1^2 + \ldots + x_n^2}.
+$$
+Сделаем замену
+$
+        x = T_\varepsilon y,
+$
+тогда
+$$
+        \frac
+          {dy}
+          {dt}
+=
+      \underbrace{
+        \left(
+          T_\varepsilon^{-1}
+          \left.\left(
+            \frac
+              {\partial f}
+              {\partial x}
+          \right)\right|_{x = 0}
+          T_\varepsilon
+        \right)
+      }_{\Lambda + B_\varepsilon}
+        +
+      \underbrace{
+        T_\varepsilon^{-1}
+        g(T_\varepsilon y)
+      }_{H(y)}.
+$$
+Заметим, что $H(y) \leqslant C\|y\|^2$. Проведем доказательство по аналогии с предыдущей леммой:
+$$
+        \dot V(y)
+=        
+      \underbrace{
+        \langle
+            (
+                \Lambda
+              +
+                \overline{\Lambda}
+            )
+            y
+          ,\,
+            \overline y
+        \rangle
+      }_{J_1 \leqslant -2 \alpha V(y)}
+        + 
+      \underbrace{
+        \langle
+            B_\varepsilon y
+          ,\, 
+            \overline y 
+        \rangle
+        + 
+        \langle
+            y
+          ,\,
+            B_\varepsilon\overline y
+        \rangle
+      }_{J_2 \leqslant 2 \varepsilon n V(y)}
+        +
+        \langle
+            H(y)y
+          ,\,
+            \overline y
+        \rangle
+        +
+        \langle
+            y
+          ,\,
+            \overline{H(y)y}
+        \rangle.
+$$
+Оценим последний член равенства:
+$$
+        \langle
+            H(y)y
+          ,\,
+            \overline y
+        \rangle
+\leqslant
+        |\langle
+            H(y)y
+          ,\,
+            \overline y
+        \rangle|
+\leqslant
+        |H(y)|
+        \cdot
+        |y|
+\leqslant
+        C|y|^3.
+$$
+Итого получаем
+$$
+        \dot V
+\leqslant
+        2(-
+          \alpha
+          +
+          \varepsilon
+          n
+          +
+          C
+          |y|
+          )
+        \cdot
+        V(y) < 0,
+\qquad
+        \mbox{в достаточно малой окрестности нуля.}
+$$
+\end{proof}
+
+
+\section{Система Лотки--Вольтерры <<хищник–жертва>>}
+
+Одной из первых математических моделей взаимодействующих популяций является система обыкновенных дифференциальных уравнений, предложенная Вито Вольтеррой (1860–1940, итальянский математик и физик), которая исторически возникла в связи с попыткой объяснить колебания улова рыбы в Адриатическом море. Та же система была предложена Лоткой несколько ранее. Модель Лотки--Вольтерры описывает взаимодействие двух видов, один из
+которых является хищником, а другой --- жертвой (например, экологическая система караси--щуки или рыси--зайцы).
+
+Если $N(t)$ --- численность жертв, $P(t)$ --- численность хищников в момент времени $t$, тогда модель Лотки--Вольтерры имеет вид
+\begin{equation}\label{eq:ch5.lv}
+        \dot N = aN - bNP,
+        \qquad
+        \dot P = -dP + cNP,
+\end{equation}
+где $a,b,c,d$ --- положительные постоянные.
+
+Основные предположения, положенные в основу системы \eqref{eq:ch5.lv} характеризуются следующими гипотезами: в отсутствии хищников жертвы размножаются неограниченно ($\dot N = aN$); хищники в отсутствии жертв вымирают ($\dot P = -dP$); слагаемые, пропорциональные члену $NP$ , рассматриваются как превращение энергии одного источника в энергию другого (эффект влияния популяции хищников на популяцию жертв
+заключается в уменьшении относительной скорости прироста численности жертв на
+величину, пропорциональную численности хищников).
+
+Рассматривая систему \eqref{eq:ch5.lv} в качестве математической модели взаимодействующих популяций, естественно считать фазовым пространством множество $\SetR^2_+ =
+\{\;N,\,P\;:\;N > 0,\,P > 0\;\}$, которое является инвариантным, так как любая траектория, начинающаяся в $\SetR^2_+$, не может пересечь линии $N = 0$ и $P = 0$, являющиеся фазовыми кривыми.
+
+Как уже доказывалось ранее, в безразмерных переменных система \eqref{eq:ch5.lv} принимает вид
+\begin{equation}\label{eq:ch5.easylv}
+        \begin{cases}
+\dot u = u(1-v) \\
+\dot v = \gamma v (u - 1),
+        \end{cases}
+\end{equation}
+где $u(\tau) = \frac{d}{c}N(t)$, $v(\tau) = \frac{b}{a}P(t)$, $\tau = at$, $\gamma = \frac{c}{a}$.
+
+Система \eqref{eq:ch5.easylv} имеет две неподвижные точки: $(0, 0)$, $(1, 1)$. Cтандартный линейный анализ показывает, что точка $(0, 0)$ --- седло. Для точки $(1, 1)$ матрица Якоби имеет
+вид
+$$
+        J = \begin{pmatrix}
+0      & -1 \\
+\gamma &  0
+        \end{pmatrix},
+$$
+ее собственные значения $\lambda_{1,2} = \pm i \gamma$. Другими словами, положение равновесия $(1, 1)$ --- негиперболическое, и линейный анализ не позволяет сделать вывод о его устойчивости.
+
+Фазовые кривые системы \eqref{eq:ch5.easylv} являются интегральными кривыми уравнения
+$$
+        \frac{dv}{du} = \gamma\frac{v(u-1)}{u(1-v)},
+$$
+решение которого
+\begin{equation}\label{eq:ch5.pi}
+        \gamma u + v - \ln u^\gamma v = H,
+\end{equation}
+где $H > H_{\min} = 1 + \gamma$, где $H_{\min}$ --- минимум функции $H(u, v)$, который достигается в точке $u = 1,\,v = 1$. Действительно, $H'_u(1, 1) = 0$, $H'_v (1, 1) = 0$ и $H''_{uu} (1, 1) < 0$, $H''_{uv} (1, 1) = 0$, $H''_{vv} (1, 1) < 0$. Легко проверить, что $L_t H(u, v) = 0$ и, следовательно,
+функция $H(u, v)$ задает первый интеграл системы \eqref{eq:ch5.easylv}. Анализируя линии уровня
+функции $H(u, v)$, можно показать, что для любых $H > H_{\min}$ они являются замкнутыми кривыми. В общем случае анализ линий уровня функции $H(u, v)$
+достаточно сложен.
+
+Основной недостаток системы \eqref{eq:ch5.easylv} как математической модели экологической
+системы заключается в ее структурной неустойчивости: малое изменение правых
+частей \eqref{eq:ch5.easylv} в метрике соответствующего пространства функций может приводить к
+качественному изменению поведения решений.
+
+\begin{assertion}[Принцип Вольтерры]
+        Если в системе хищник--жертва, описываемой моделью \eqref{eq:ch5.lv}, оба вида истребляются равномерно и пропорционально числу их индивидуумов, то среднее число жертв возрастает, а среднее число хищников убывает.
+\end{assertion}
+\begin{proof}
+        Пусть $N (t)$, $P (t)$ --- периодические решения системы \eqref{eq:ch5.lv} с периодом $T$. Из \eqref{eq:ch5.lv} следует, что
+$$
+        \frac{d}{dt}\ln N = a - bP,
+\qquad
+        \frac{d}{dt}\ln P = -d +cN.
+$$
+        Интегрируя последние равенства по $t$ в промежутке от $0$ до $T$ , получим
+$$
+        \frac{1}{T}\int\limits_0^TP(t)\,dt = \frac{a}{b},
+\qquad
+        \frac{1}{T}\int\limits_0^TN(t)\,dt = \frac{d}{c},
+$$
+так как $N(T) = N (0)$, $P (T) = P (0)$. То есть среднее число жертв и хищников остается постоянным и равным координатам нетривиального положения равновесия \eqref{eq:ch5.lv}.
+Если оба вида истребляются равномерно и пропорционально числу их индивидуумов, то у жертв уменьшается коэффициент рождаемости $a$, который становится равным $a-\delta_2$, а у хищников увеличивается коэффциент смертности $d$, который становится равен $d + \delta_1$, другими словами, среднее число жертв равно $\nicefrac{(d + \delta_1)}{c}$, а среднее
+число хищников — $\nicefrac{(a - \delta_2 )}{b}$.
+
+\end{proof}
+
+Описанный выше эффект наблюдается в природе. Например, во время первой
+мировой войны лов рыбы в Адриатическом море был сильно сокращен, что, к удивлению биологов, привело к увеличению числа хищников и уменьшению числа жертв. Кроме всего прочего, принцип Вольтерры показывает двойственный характер применения средств от насекомых для сохранения урожая на полях. Почти все такие химические вещества действуют не только на вредителей, но и на их естественных врагов, что зачастую приводит к увеличению числа вредителей и уменьшению, например, числа птиц, питающихся этими вредителями. Отметим также, что принцип Вольтерры впервые теоретически показал, что
+в экосистеме <<хищник–жертва>> популяция жертв более чувствительна к процессу пропорционального уменьшения особей в популяции.
