@@ -1,0 +1,447 @@
+Рассмотрим систему, определенную в области  $D \subset \ensuremath{\mathbb{R}}^n$
+\begin{equation} \label{ch4sys}
+\begin{cases}
+\dot x = f(x), & x \in D \\
+x(0) = x^0.
+\end{cases}
+\end{equation}
+\begin{definition} Точку пространства $a \in D$ такую что $f(a) = 0,$ или другими словами $f_i(a) = 0, i = 1,2, \ldots, n ,$ называют \textit{положением равновесия} для системы \eqref{ch4sys}. \end{definition}
+Для изолированных положений равновесия вводится классификация:
+\begin{definition}
+Положение равновесия $a$ называют \textit{устойчивым по Ляпунову}, если 
+$$
+\forall \, \varepsilon > 0 \, \exists \, \delta > 0 : \forall \, x^0 \in D, |x^0 - a| < \delta \text{ верно } |x(t; x^0) - a| < \varepsilon, \forall \, t >0.
+$$
+\end{definition}
+\begin{definition}
+Положение равновесия $a$ называют \textit{асимптотически устойчивым по Ляпунову}, если
+\begin{enumerate}
+\item положение равновесия $a$ устойчиво по Ляпунову;
+\item $\lim\limits_{t\rightarrow + \infty} x(t, x^0) = a. $
+\end{enumerate}
+\end{definition}
+\begin{definition} 
+Положение равновесия, которое не является устойчивым, называют \textit{неустойчивым по Ляпунову}
+\end{definition}
+
+Прежде чем перейти к классификации положения равновесия, рассмотрим пример.
+
+\textit{Пример 1}
+
+$$
+\begin{cases}
+\frac{dx}{dt} = xy, \\
+\frac{dy}{dt} = y^2 - x^4
+\end{cases}
+$$
+Исключая $t$, что можно сделать в силу автономности системы, получим $$y' - \frac{y}{x}=-\frac{x^2}{y}.$$Траектории данной системы отображены на рисунке \ref{ch4ex1}.
+
+\begin{figure}[h]
+	\center{\includegraphics[width = 0.4\textwidth]{ch4/IMG_0508.eps}}
+	\caption{Траектории системы из примера.}
+	\label{ch4ex1}
+
+\end{figure}
+
+
+\subsection{Классификация положений равновесия}
+Строгую классификацию положений равновесия можно провести только для двумерного пространства, так как для пространств большей размерности ситуация заметно усложняется, что мы увидим чуть позже. Поэтому теперь будем рассматривать частный случай системы \eqref{ch4sys}, а именно линейную систему:
+\begin{equation}
+\begin{cases}
+\dot x_1 = a_{11}x_1 + a_{12}x_2, \\
+\dot x_2 = a_{21}x_1 + a_{22}x_2,
+\end{cases}
+\end{equation}
+которую также можно записать в виде 
+\begin{equation} \label{ch4sys2}
+\dot x = A x.
+\end{equation}
+Заметим, что условием единственности положения равновесия $(0,0)$ этой системы (а так же его изолированности) будет
+\begin{equation} \label{ch4const1}
+\text{det} A = \begin{vmatrix}
+a_{11} & a_{12} \\
+a_{21} & a_{22} 
+\end{vmatrix}. \neq 0
+\end{equation}
+
+Приведем заменой переменных вышеуказанную систему к диагональному виду. Из курса линейной алгебры известно, что в случае наличия двух различных собственных значений (или одного геометрической кратности 2) у матрицы $A$ существует преобразование с матрицей $T$ такое, что:
+$$
+\Lambda = \text{diag} (\lambda_1, \lambda_2) = T^{-1} A T.
+$$
+При этом 
+$$
+x = Ty; \, T \dot y = A T y \quad \Rightarrow \quad \dot y = \Lambda y,
+$$
+таким образом, мы можем рассматривать систему 
+\begin{equation} \label{ch4sys3}
+\begin{cases}
+\dot y_1 = \lambda_1 y_1 , \\
+\dot y_2 = \lambda_2 y_2,
+\end{cases}
+\end{equation}
+эквивалентную исходной системе \eqref{ch4sys2}. Тогда изучение сведется к исследованию поведения траекторий системы \eqref{ch4sys3} при различных значениях $\lambda_1, \lambda_2.$ В случае наличия у матрицы $A$ только вещественных собственных значений обозначим $ \frac{\lambda_1 }{ \lambda_2} = k,$ при этом если  $\lambda_2= 0$ будем проводить аналогичные далее изложенным рассуждения, перевернув дробь. Заметим, что одновременно оба собственных значения равными нулю быть не могут в силу условия \eqref{ch4const1}.
+
+\begin{itemize}
+\item  \textbf{\textit{Узел}}
+
+В случае, когда $\lambda_1 \cdot \lambda_2 > 0$, то есть $\lambda_1 > 0 ,  \lambda_2 > 0$ или $\lambda_1 < 0 ,  \lambda_2 < 0,$ положение равновесия называется \textit{узлом}. Проинтегрируем систему \eqref{ch4sys3}:
+$$
+\frac{dy_1}{dy_2} = \frac{\lambda_1 }{ \lambda_2} \cdot \frac{y_1}{y_2} \quad \rightarrow  \Big \{\frac{\lambda_1 }{ \lambda_2} = k \Big \}  \rightarrow \quad\text{ln}|y_1| =  k \, \text{ln}|y_2|  +  \text{ln}|C|  \quad \rightarrow \quad y_1 = C y_2^k.
+$$
+
+В данном случае $k>0.$ При $ \lambda_1 >0,  \lambda_2 > 0 $ узел является \textit{неустойчивым}; при $ \lambda_1 < 0 ,  \lambda_2 < 0$ --- \textit{устойчивым} (асимптотически). Типичное поведение траекторий в данном случае можно увидеть на рисунке \ref{ch4node1}.
+
+Здесь так же уместно рассмотреть случай, когда матрица $A$ не приводится к диагональному виду, то есть приводится только к виду Жордановой клетки размера 2. Такое происходит, если собственное значение у матрицы одно ($\lambda = \lambda_1 = \lambda_2$) и его геометрическая кратность равна 1. Тогда существует преобразование, приводящее систему \eqref{ch4sys2} к виду:
+$$
+\begin{cases}
+\dot y_1 = \lambda_1 y_1 + y_2 , \\
+\dot y_2 = \lambda_2 y_2.
+\end{cases}
+$$
+Проинтегрируем ее.
+$$
+\frac{dy_1}{dy_2} = \frac{\lambda_1  y_1 +y_2}{ \lambda_2 y_2} = \frac{y_1 }{ y_2} + \frac{1}{\lambda}
+$$
+$$
+z = \frac{y_1 }{ y_2} \quad \rightarrow  \Big \{  z = z(y_2) \Big \}  \rightarrow \quad y_1' = z' \, y_2 + z \quad \rightarrow \quad \frac{dz}{dy_2} y_2 + z = z + \frac{1}{\lambda} 
+$$
+$$
+ z(y_2) =  \frac{1}{\lambda} \text{ln}|y_2| +  \text{ln}|C|
+$$
+$$
+ \quad y_1 = y_2 \, (\frac{1}{\lambda} \text{ln}|y_2| +  C)
+$$
+При этом, учитывая соотношение $ \lim\limits_{y_2  \rightarrow 0 } (y_2 \,  \text{ln}|y_2|) = 0 $ получим: 
+$$
+\frac{dy_1}{dy_2} \Big |_{y_1 = 0} = \infty.
+$$
+При $\lambda > 0$ получим неустойчивое положение равновесия, при $\lambda < 0$ устойчивое. Поведение траекторий данной системы напоминает классический узел, повернутый на 90 градусов,  что можно увидеть на рисунке \ref{ch4node2}.
+
+\begin{figure}[h]
+	\centering
+	
+	\begin{subfigure}[t]{0.4\textwidth}
+	\center{\includegraphics[width=\textwidth]{ch4/IMG_0509.eps}}
+	\caption{Неустойчивый узел}
+	\end{subfigure}
+	~ ~ ~ ~               
+	\begin{subfigure}[t]{0.4\textwidth}
+	\center{\includegraphics[width=\textwidth]{ch4/IMG_0510.eps}}
+	\caption{Устойчивый узел}
+	\end{subfigure}
+	\caption{Узел}\label{ch4node1}
+	
+\end{figure}
+
+
+
+\begin{figure}[h]
+	\centering
+	
+	\begin{subfigure}[t]{0.4\textwidth}
+	\center{\includegraphics[width=\textwidth]{ch4/IMG_0511.eps}}
+	\caption{Неустойчивый узел}
+	\end{subfigure}
+	~ ~ ~ ~               
+	\begin{subfigure}[t]{0.4\textwidth}
+	\center{\includegraphics[width=\textwidth]{ch4/IMG_0512.eps}}
+	\caption{Устойчивый узел}
+	\end{subfigure}
+	
+	\caption{Узел, в случае Жордановой формы}\label{ch4node2}
+\end{figure}
+
+
+\item  \textbf{\textit{Седло}}
+
+При $\lambda_1 \cdot \lambda_2 < 0$, проинтегрировав систему аналогичным способом получим:
+$$
+y_1 = C y_2^k, \quad k <0.
+$$
+Получается, что по одному направлению систему <<сжимает>>, по другому <<растягивает>>. При этом оси $Oy_1, Oy_2$ называются \textit{сепаратрисами} седла. Если $\lambda_1 > 0,$ то сепаратриса $Oy_1$ называется \textit{неустойчивой сепаратрисой седла}, в свою очередь при $\lambda_2 < 0$ $Oy_2$ --- \textit{устойчивая сепаратриса седла}.  Вид траекторий для различной знакоопределенности собственных значений можно увидеть на рисунке \ref{ch4saddle}.
+
+Заметим, что одно из собственных значений всегда отрицательно для данного случая, поэтому седло --- неустойчивое положение равновесия.
+
+\begin{figure}[h]
+	\centering
+	
+	\begin{subfigure}[t]{0.4\textwidth}
+	\center{\includegraphics[width=\textwidth]{ch4/IMG_0513.eps}}
+	\end{subfigure}
+	~ ~ ~ ~               
+	\begin{subfigure}[t]{0.4\textwidth}
+	\center{\includegraphics[width=\textwidth]{ch4/IMG_0514.eps}}
+	\end{subfigure}
+	
+	\caption{Седла с различными сепаратрисами}\label{ch4saddle}
+\end{figure}
+
+\item  \textbf{\textit{Фокус}}
+
+Ранее мы полагали собственные значения вещественными, теперь перейдем к рассмотрению матрицы системы с комплексными собственными значениями. Тогда $\lambda_1 = \alpha + i \, \beta, \lambda_2 = \alpha - i \, \beta,$ и система \eqref{ch4sys2} примет вид:
+$$
+\begin{cases}
+\dot y_1 = (\alpha + i \, \beta) y_1 , \\
+\dot y_2= (\alpha - i \, \beta) y_2.
+\end{cases}
+$$
+Будем рассматривать только одно из уравнений системы, так как
+$$
+\frac{ d \bar y_2}{dt} = (\alpha - i \, \beta) \bar y_2 \quad \Rightarrow \quad y_1 = \bar y_2.
+$$
+
+Пусть $\beta > 0, $ сделаем замену $y_1= u(t) + i\, v(t)$ и получим
+$$
+\frac{du}{dt} + i \, \frac{dv}{dt} = (\alpha + i \, \beta) ( u(t) + i\, v(t)),
+$$
+что равносильно
+\begin{equation} \label{ch4sys4}
+\begin{cases}
+\frac{du}{dt} = \alpha u(t) -   \beta v(t) , \\
+\frac{dv}{dt} = \beta u(t) + \alpha v(t).
+\end{cases}
+\end{equation}
+
+Далее проведем ряд преобразований.
+$$
+\begin{cases}
+u(t) = r(\varphi) \text{cos} \varphi  \\
+v(t) = r(\varphi) \text{sin} \varphi, 
+\end{cases}  \quad  \frac{d\varphi}{dt} = 1, dr = r' \, d \varphi
+$$
+$$
+\begin{cases}
+du = (r'(\varphi) \text{cos} \varphi - r(\varphi) \text{sin}\varphi) d\varphi \\
+dv = (r'(\varphi) \text{sin} \varphi  + r(\varphi) \text{cos}\varphi) d\varphi
+\end{cases} \Rightarrow
+$$
+
+$$
+\frac{du}{dv} = \frac{\alpha u(t) -   \beta v(t)}{\beta u(t) + \alpha v(t)} = \Big \{  \frac{\alpha}{\beta} = k \Big \} = \frac{ku - x}{u + kv} \Rightarrow
+$$
+$$
+\Rightarrow \quad \frac{r' \text{cos} \varphi - r \text{sin}\varphi}{r' \text{sin} \varphi  + r \text{cos}\varphi} = \frac{kr \, \text{cos} \varphi - r \, \text{sin}\varphi}{r\, \text{cos}(\varphi) + k  r\, \text{sin} \varphi}
+$$
+$$
+r' (r  \, \text{cos}^2 \varphi + kr \,  \text{cos} \varphi   \, \text{sin} \varphi - kr  \, \text{cos} \varphi \, \text{sin} \varphi + r  \, \text{sin}^2 \varphi ) = $$ $$ =kr^2\, \text{cos}^2 \varphi - r^2  \, \text{cos} \varphi \, \text{sin} \varphi + r^2 \,  \text{cos} \varphi \,  \text{sin} \varphi + k r^2 \, \text{sin}^2 \varphi
+$$
+$$
+r  r' = k  r^2 \quad \rightarrow \quad r' = k r  
+$$
+$$
+\frac{dr}{d\varphi} r = k r^2 \quad \longleftrightarrow \Big \{  \frac{d\varphi}{dt} = 1 \Big \} \longleftrightarrow \quad \dot r = kr, \quad k = \frac{\alpha}{\beta}, \beta >0 
+$$
+Таким образом, система приводится к виду:
+$$
+\begin{cases}
+u(t) = r(\varphi) \text{cos} \varphi  \\
+v(t) = r(\varphi) \text{sin} \varphi 
+\end{cases}, \quad r = C \,e^{k \varphi}.
+$$
+Если $\text{Re} \, \lambda = \alpha > 0$ получаем $k>0, $ из чего следует, что траектория со временем удаляется от начала координат. В таком случае положение равновесия классифицируется как \textit{неустойчивый фокус}. При $\text{Re} \, \lambda = \alpha < 0$ значение $k$ отрицательно, и с течением времени траектория приближается к положению равновесия, и мы получаем \textit{устойчивый фокус}. Для обоих видов фокусов типичное поведение траекторий продемонстрировано на рис. \ref{ch4focus}.
+
+\begin{figure}[h]
+	\centering
+	
+	\begin{subfigure}[t]{0.4\textwidth}
+	\center{\includegraphics[width=\textwidth]{ch4/IMG_0515.eps}}
+	\caption{Неустойчивый фокус}
+	\end{subfigure}
+	~ ~ ~ ~               
+	\begin{subfigure}[t]{0.4\textwidth}
+	\center{\includegraphics[width=\textwidth]{ch4/IMG_0516.eps}}
+	\caption{Устойчивый фокус}
+	\end{subfigure}
+	
+	\caption{Фокус}\label{ch4focus}
+\end{figure}
+
+
+\item  \textbf{\textit{Центр}}
+
+Наконец, при наличии у матрицы системы лишь чисто мнимых собственных значений ($\text{Re} \, \lambda = \alpha = 0, k =0$) положение равновесия называется \textit{центром}. Центр является примером устойчивой, но не асимптотически устойчивой точки покоя, его изображение можно увидеть на рис. \ref{ch4centre}.
+
+\begin{figure}[h]
+	\center{\includegraphics[width = 0.4\textwidth]{ch4/IMG_0517.eps}}
+	\caption{Центр}\label{ch4centre}
+	
+
+\end{figure}
+
+
+\end{itemize}
+
+Подойдем к вопросу устойчивости с другой стороны: попробуем определить вид точки покоя не вычисляя самих собственных значений. Запишем характеристический многочлен матрицы системы $A$:
+$$
+\begin{vmatrix}
+a_{11} - \lambda & a_12\\
+a_{21} & a_{22} - \lambda
+\end{vmatrix} = \lambda^2 - (a_{11} + a_{22}) \lambda + (a_{11} a_{22} - a_{12} a_{21}) = 0 = \lambda^2 - \text{Tr} A + |A|.
+$$
+Тогда собственные значения можно выразить как
+$$
+\lambda_{1,2} = \frac{\text{Tr} A \pm \sqrt{(\text{Tr} A)^2 - 4 |A|}}{2}.
+$$
+При этом $\text{Re}\lambda_{1,2} = \frac{\text{Tr} A}{2},$ поэтом условием устойчивости будет 
+$$
+\text{Tr} A < 0, |A| >0.
+$$
+И наконец, чтобы собственный значения были вещественными необходимо и достаточно чтобы
+$$
+|A| < \frac{1}{4} (\text{Tr} A)^2.
+$$
+Полученный результат можно отобразить графически на схеме \ref{ch4sc}.
+
+\begin{figure}[h]
+	\center{\includegraphics[width = 0.75\textwidth]{ch4/IMG_0519.eps}}
+	\caption{Схема, отображающая зависимость характера точки покоя от значений следа и определителя матрицы линейной системы}\label{ch4sc}
+	
+
+\end{figure}
+
+В случае нелинейности двумерной системы данная классификация неприменима в точности, однако, полученные выводы легко обобщаются. 
+
+\textit{Пример 2.}
+
+$$
+\begin{cases}
+\dot x_1 = -\lambda x_1^2, & \lambda >0 \\
+\dot x_2 = x_2
+\end{cases}
+$$
+Приоинтегрируем данную систему, для которой начало координат является положением равновесия.
+$$
+\frac{dx_1}{dx_2} = -\frac{\lambda x_1^2}{x_2}   \quad \longleftrightarrow \quad \text{ln} |x_2| = \frac{1}{\lambda \, x_1} + \text{ln} |C|   \quad \longleftrightarrow \quad x_2 = C \, e^{\frac{1}{\lambda \, x_1}}.
+$$
+Поведение траекторий данной системы напоминает нечто, что можно охарактеризовать как <<седлоузел>>, сами траектории представлены на рисунке \ref{ch4sadnode}.
+
+\begin{figure}[h]
+	\center{\includegraphics[width = 0.4\textwidth]{ch4/IMG_0518.eps}}
+	\caption{<<Седлоузел>>}\label{ch4sadnode}
+	
+
+\end{figure}
+
+В трехмерном пространстве ситуация сильно усложняется, что можно увидеть на примерах ниже, рис. \ref{ch4exs}. Для упрощения, рассматриваются системы вида 
+$$ \dot y_i = \lambda_i y_i, i =1,2,3$$
+в предположении, что Жордановых клеток у матриц систем нет. На рисунке также изображены схемы расположения собственных значений на вещественной оси/комплексной плосткости.
+
+Для исследования систем, к которым неприменима двумерная линеризация (на которой основана описанная классификация), существует отдельная теория, которая описана ниже.
+
+\begin{figure}[h]
+	\center{\includegraphics[width = 0.75\textwidth]{ch4/IMG_0562.eps}}
+	\caption{Примеры траекторий систем в трехмерном простравнстве}\label{ch4exs}
+	
+
+\end{figure}
+
+\subsection{Теорема Ляпунова об устойчивости}
+
+Сначала введем понятие \textit{положительно определенной функции}.
+\begin{definition}
+Функция $V(x)$  \textit{положительно определена в окрестности точки $a$}, если для любого $x$ из окрестности $U_a$ точки $a$
+$$
+V(x) > 0, x \neq a; V(a) = 0.
+$$
+\end{definition}
+\begin{definition}
+Положительно определенная в окрестности $U_a$ неподвижной точки $a$ системы \eqref{ch4sys}, гладкая функция (из $C^1(D)$) называется  \textit{функцией Ляпунова системы \eqref{ch4sys}}, если 
+$$
+\dot V(x) = \left< f(x), \nabla V(x) \right> \leqslant 0, x \in U_a , \text{где}
+$$
+$$
+\dot V(x) = \sum\limits_{i=1}^n \frac{\partial V}{\partial x_i} \dot x_i = \sum\limits_{i=1}^n \frac{\partial V}{\partial x_i} f_i(x)
+$$
+\end{definition}
+
+Следующие теоремы позволяют установить устойчивость или неустойчивость положения равновесия путем нахождения специальной функции  для рассматриваемой системы, что зачастую является непростой задачей, однако однозначно приводит к ответу на вопрос о характере устойчивости особой точки.
+
+\begin{theorem}  \textit{\textbf{Ляпунова об устойчивости} (Первая теорема Ляпунова об устойчивости)}
+
+
+Если в некоторой окрестности положения равновесия $U_a$ существует функция Ляпунова, то это положение равновесия устойчиво по Ляпунову.
+\end{theorem}
+\begin{proof}
+Пусть $a = 0$ (иначе сделаем замену $\tilde x = x-a$).
+
+Покажем, что $\forall \, \varepsilon >0 \, \exists \, \delta:|x^0 - a| < \delta: |x(t, x^0)| < \varepsilon , \, \forall \, t \geqslant 0.$
+Фиксируем $\varepsilon >0$ и рассмотрим шар $B_{\varepsilon} = \big \{ x: |x| \leqslant  \varepsilon \big \}.$ Тогда $\partial B_{\varepsilon} = S_{\varepsilon}$ --- замкнутая область. Следовательно, если функция Ляпунова $V(x)$ существует, то она достигает своих максимума и минимума на $S_{\varepsilon},$ поэтому 
+$$
+\min\limits_{x \in S_{\varepsilon}} V(x) = m >0.
+$$
+Рассмотрим $B_{\delta} = \big \{ x: |x| \leqslant  \delta \big \}.$ Так как $V(0) = 0$, можно выбрать настолько маленькое $\delta $, что: $V(x) < m, x \in B_{\delta}.$
+Возьмем $x^0 \in B_{\delta}.$ Так как $\dot V(x) \leqslant 0,$ по Лемме (о производной вдоль траекторий системы) $V$ убывает вдоль траекторий системы. Значит, $V(x(t, x^0)) \leqslant m,$ или другими словами траектория, выпущенная из $x^0,$ не покидает шар $B_{\varepsilon}.$ \end{proof}
+
+\begin{theorem} \textit{\textbf{Ляпунова об асимптотической устойчивости} (Вторая теорема Ляпунова об устойчивости)}
+
+Если в некоторой окрестности положения равновесия $U_a$ существует функция Ляпунова, при этом $\dot V(x) < 0$ в этой окрестности ($\dot V(x) < 0,  \forall \, x \in U_a \backslash \{a\}, \text{возможно } \dot V(a) = 0$). Тогда положение равновесия асимптотически устойчиво.
+\end{theorem}
+\begin{proof}
+$\dot V(x(t; x^0)) = w(t) > 0  \Rightarrow \text{пусть } \lim\limits_{t \rightarrow \infty} = A \geqslant 0,$ если $A = 0$ тогда автоматически получаем асимптотическую устойчивость. Предел существует, так как $\dot V(x) < 0$, то есть $V(x)$ убывает вдоль траекторий системы, будучи положительно определенной функцией.
+
+Рассмотрим случай $A>0$: поинтересуемся поведением $x$ из множества $A = \{ x:  \alpha \leqslant |x| \leqslant \varepsilon \}.$ Так как функция убывает на траекториях получим, что на $A$, замкнутом и ограниченном множестве, $\dot V(x) < -m, m >0.$ Тогда
+$$
+\int\limits_0^t \dot V(x) dx < - mt +c,
+$$
+
+$$
+V(x(t)) - V(0) < -mt +c,  \quad V(0) = 0,
+$$
+устремим $t$ к бесконечности $V(x(t)) < 0$, что является противоречием с определением $V(t)$ как положительно определенной функции. Значит $A = 0,$ и точка покоя асимптотически устойчива.  \end{proof}
+
+В основном теоремы Ляпунова используют применительно к нелинейным системам, предварительно сделав замену координат так, чтобы положение равновесия было в начале координат. Наиболее часто употребимый вид функции Ляпунова таков:
+$$ V(x) = a_{11} x_1^2 + a_{12}x_1x_2 +a_{22}x_2^2. $$
+Если выполнено условие $a_{12}^2 - a_{22}a_{11} < 0$, то $V(x)$ положительно определена.
+
+\textit{Пример 3.}
+$$
+\begin{cases} 
+\dot x_1 = x_2 \\
+\dot x_2 = - x_1 -x_2^3
+\end{cases}
+$$
+Для данной системы положим $V(x_1, x_2) = \frac{1}{2} (x_1^2 + x_2^2).$ Тогда
+$$
+\dot V = \frac{\partial V}{\partial x_1} \dot x_1 +\frac{\partial V}{\partial x_2} \dot x_2 = x_1 x_2 + x_2 (- x_1 - x_2^3) = -x_2^4 \leqslant 0,$$
+то есть система устойчива, но не обязательно асимптотически устойчива. Обратимся к <<спорному случаю>>:
+$$
+x_2 = 0 \rightarrow \dot x_1 = 0, x_1 = 0 \rightarrow x_1 \equiv 0, x_2 \equiv 0,
+$$
+значит, начало координат является асимптотически устойчивым.
+
+\textit{Пример 4.}
+$$
+\begin{cases} 
+\dot x_1 = - x_1^3 - 2 x_1 x_2^3 \\
+\dot x_2 = - x_1^2 x_2 - x_2^3
+\end{cases}
+$$
+Здесь нужно выбрать $V(x_1, x_2) = x_1^2 + x_1^2 x_2^2 + x_2^4$, с помощью нее можно показать, что система асимптотически устойчива в нуле.
+
+\begin{theorem} \textit{\textbf{Четаева о неустойчивости}}
+
+Рассматривается система 
+$$
+\dot x = f(x), f(a) =0
+$$
+Пусть кривая $\gamma$ такова, что $a \in \gamma: V(x) > 0, \dot V(x) > 0, x \in U_1; \dot V(x)\big |_{x \in \gamma} = 0.$ Тогда $a$ --- неустойчивое  положение равновесия.
+\end{theorem}
+
+\begin{figure}[h]
+	\center{\includegraphics[width = 0.4\textwidth]{ch4/IMG_0520.eps}}
+	\caption{Области, упомянутые в теореме Четаева}\label{ch4Chet}
+	
+
+\end{figure}
+
+\textit{Пример 5.}
+$$
+\begin{cases} 
+\dot x_1 = x_2 +  x_1 x_2^2 \\
+\dot x_2 = - x_1 +  x_1^2 x_2
+\end{cases}
+$$
+Рассмотрим $V = x_1^2 + x_2^2$ и где $\gamma = \big \{  x_2 = 0 \big \}.$
+$$
+\dot V = 2 x_1(x_2 + x_1x_2^2) + 2 x_2(-x_1 + x_1^2 x_2) = 2 x_1 x_2  + 2 x_1^2 x_2^2 - 2 x_1 x_2 + 2 x_1 x_2^2 = 4 x_1^2 x_2^2
+$$
