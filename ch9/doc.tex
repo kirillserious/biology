@@ -1,18 +1,23 @@
-\documentclass{article}
-\usepackage[utf8]{inputenc}
+\documentclass[oneside, final, 12pt]{article}
 
-\usepackage[russianb]{babel}
+\pagestyle{plain}
+
+\usepackage{a4wide}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
 \usepackage{vmargin}
 \setpapersize{A4}
-\setmarginsrb{2.5cm}{2cm}{1.5cm}{2cm}{0pt}{0mm}{0pt}{13mm}
+\setmarginsrb{2cm}{1.5cm}{1cm}{1.5cm}{5pt}{5mm}{5pt}{13mm}
 \usepackage{indentfirst}
-\usepackage{amsmath}
-\sloppy
-\begin{document}
+\usepackage{graphicx}
 
-\title{ДСиБМ}
-\author{arin7al}
-\date{December 2019}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amssymb}
+
+
+\begin{document}
 
 Если система \((1)\) имеет ! пол. равн  \(p \in R^n \), тогда \(p\) является единственно представимой треакторией системы \((1)\), \(a_{ii} > 0\), \(i = \overline{1,n}\).
 Если \(a_{ii} = 0\), то \(\exists\) ПИ сиситемы \(\nu(\upsilon):\dot{\nu}(\upsilon) = 0\),
@@ -73,6 +78,7 @@
 \(\dot{\upsilon_3} = \upsilon_3(1-\alpha\upsilon_1 - \beta\upsilon_2 - \upsilon_3) \),
 \hspace{6.6cm} \(\alpha+\beta\geq 2\) \(b_1\)
 
+
 \vspace{0.5cm}
 Рассмотрим случай { \underline{\(\upsilon_3 = 0\)}}
 
@@ -122,6 +128,10 @@ J(\upsilon_1,\upsilon_2) =
  0 & 1
  \end{pmatrix}
 \)\hspace{0.5cm}\(\Rightarrow\) это исток.
+\begin{figure} [h!]
+			\center{\includegraphics[width=0.8\textwidth]{IMG_5475.eps}}
+			\caption{Модель циклической конкуренции}	
+\end{figure}
 
 \newpage
 %=======================след стр================================================
@@ -139,8 +149,12 @@ J(\upsilon_1,\upsilon_2) =
 
 \vspace{0.5cm}
 \(\exists!\) траектория, которая обходит точки  A, B и C
-%что-то там еще, не понял, что написано
+
 (гомоклинические траектории).
+\begin{figure} [h!]
+			\center{\includegraphics[width=0.8\textwidth]{IMG_5476.eps}}
+			\caption{Модель циклической конкуренции}	
+\end{figure}
 
 \vspace{0.5cm}
 {\underline{Неподвижные точки в трехмерном пространстве}}
@@ -349,7 +363,14 @@ U = (1, \exp^\frac{2i\pi}{3}, \exp^\frac{4i\pi}{4})
 \(
 \alpha + \beta < 2
 \)
-%$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$место для графиков
+\begin{figure} [h!]
+			\center{\includegraphics[width=0.8\textwidth]{IMG_5477.eps}}
+			\caption{Устойчивое вращение}	
+\end{figure}
+\begin{figure} [h!]
+			\center{\includegraphics[width=0.8\textwidth]{IMG_5478.eps}}
+			\caption{}	
+\end{figure}
 
 \vspace{0.5cm}
 \textit{в2)}
@@ -386,6 +407,11 @@ U = (1, \exp^\frac{2i\pi}{3}, \exp^\frac{4i\pi}{4})
 	\dot{p} = 3p(1-s)
 	\end{cases}
 \)
+
+\begin{figure} [h!]
+			\center{\includegraphics[width=0.8\textwidth]{IMG_5479.eps}}
+			\caption{Картина неустойчива}	
+\end{figure}
 
 \vspace{0.5cm}
 \(
@@ -474,6 +500,12 @@ $\exists S_R : $ траектории $u_0 \in S_R$, \hspace{0.2cm} $u(t;u_0) \i
 $u|_{t=0} = u_0 \geq \delta > 0$ \hspace{0.2cm} $\lim_{t \to \infty} u(t) \geq\varepsilon$
 
 \vspace{0.5cm}
+
+\begin{figure} [h!]
+			\center{\includegraphics[width=0.8\textwidth]{IMG_5480.eps}}
+			\caption{Условие невырождености}	
+\end{figure}
+
 $M - $ поглощающая точка, если траектория в нее входит. $u_k=0$
 
 $M -$ неподвижная точка системы (1), когда траектория может в нее попасть
@@ -502,6 +534,10 @@ $r_k = (A\overline{u})_k$ \hspace{0.2cm} $\overline{u} = M_k$
 	\dot{u_2} = u_2(\gamma - u_1 - \beta u_2) = u_2f_2(u_1,u_2)
 	\end{cases}
 \)
+\begin{figure} [h!]
+			\center{\includegraphics[width=0.8\textwidth]{IMG_5481.eps}}
+			\caption{Иллюстрация к примеру}	
+\end{figure}
 
 \newpage
 %===================================================================================
@@ -541,7 +577,11 @@ $
 \end{Large}
 
 \end{center}
- 
+\begin{figure} [h!]
+			\center{\includegraphics[width=0.8\textwidth]{IMG_5482.eps}}
+			\caption{}	
+\end{figure} 
+
 Средний интеграл в системе дает эту неподвижную точку.
 
 \vspace{0.5cm}
@@ -578,6 +618,11 @@ $y $ отделено от нуля, выпукло. По теореме об о
 
 азделяющая это множество и 0.
 
+\begin{figure} [h!]
+			\center{\includegraphics[width=0.8\textwidth]{IMG_5483.eps}}
+			\caption{}	
+\end{figure}
+
 \vspace{0.5cm}
 Рассмотрим $ c \bot $ этой плоскости $v(y) = (c,y) = \Sigma_{i=1}^n c_i y_i > 0$
 
@@ -598,21 +643,6 @@ $\Rightarrow$ вдоль траектории система $\infty$ расте
 \end{large}
 
 \end{document}
-
-
-
-
-
-\hspace{0.2cm}
-\vspace{0.5cm}
-\(
-
-\)
-
-
-
-
-
 
 
 
