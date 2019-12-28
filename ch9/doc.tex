@@ -1,0 +1,641 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage[russianb]{babel}
+\usepackage{vmargin}
+\setpapersize{A4}
+\setmarginsrb{2.5cm}{2cm}{1.5cm}{2cm}{0pt}{0mm}{0pt}{13mm}
+\usepackage{indentfirst}
+\usepackage{amsmath}
+\sloppy
+\begin{document}
+
+\title{ДСиБМ}
+\author{arin7al}
+\date{December 2019}
+
+Если система \((1)\) имеет ! пол. равн  \(p \in R^n \), тогда \(p\) является единственно представимой треакторией системы \((1)\), \(a_{ii} > 0\), \(i = \overline{1,n}\).
+Если \(a_{ii} = 0\), то \(\exists\) ПИ сиситемы \(\nu(\upsilon):\dot{\nu}(\upsilon) = 0\),
+траектории системы \(\nu(\upsilon) = const\).
+
+\vspace{0.5cm}
+неподв. \(T:\omega_i(p) = 0\), \(i = 1,2,...,n\).
+
+\vspace{0.5cm}
+\(
+ \begin{cases}
+  	a_{11}p_1 + a_{12}p_2 = r_1
+  	\\
+  	a_{21}p_1 + a_{22}p_2 - a_{23}p_3 = r_2
+  	\\
+  	...
+  	\\
+  	a_{i,i-1}p_{i-1} + a_{ii}p_i - a_{i,i+1}p_{i+1} = r_i &\textit{\hspace{10pt}\(r_i\) выражается через \(p\) и подставляется в \((1)\)}
+  	\\
+  	...
+  	\\
+  	a_{n,n-1}p_{n-1} - a_{nn}p_n = r_n
+ \end{cases}
+\)
+
+\vspace{0.5cm}
+\(\nu(\upsilon) = \sum_{i=1}^n c_i(\upsilon_i - p_i\ln{u_i})\), где \(c_i\) -- некоторые константы
+
+\vspace{0.5cm}
+\(\dot{\nu}(\upsilon) =\sum_{i=1}^n c_i(1-\frac{p_i}{\upsilon_i})\dot{\upsilon_i} = \sum_{i=1}^n c_i(u_i - p_i)\omega_i(\upsilon) = \lbrace \frac{d\upsilon_i}{dt} = \upsilon_i\omega_i(\upsilon)\rbrace \),  обозначим \(\nu_i = \upsilon_i - p_i\)
+
+\vspace{0.5cm}
+\(\omega_i = a_{i,i-1}(\upsilon_{i-1}-p_{i-1}) - a_{ii}(\upsilon_i - p_i) - a_{i,i+1}(\upsilon_{i+1} - p_{i+1}) = a_{i,i-1}\nu_{i-1} - a_{ii}\nu_i - a_{i,i+1}\nu_{i+1}\)
+
+
+\vspace{0.5cm}
+\(\dot{\nu_i}(\upsilon) = -\sum_{i=1}^n c_ia_{ii}\nu_i^2 + \sum_{i=1}^{n-1} \nu_i\nu_{i+1}(-c_i a_{i+1} + c_{i+1}a_{i+1,i})\)
+
+\vspace{0.5cm}
+\(\frac{c_i}{c_{i+1}} = \frac{a_{i+1,i}}{a_{i,i+1}}\), \(c_i > 0\).
+
+\vspace{0.5cm}
+\(\dot{\nu_i}(\upsilon) = -\sum_{i=1}^n c_ia_{ii}\nu_i^2 \leq 0 \)
+
+\vspace{0.5cm}
+\(\dot{\nu_i}(\upsilon) = 0\), \hspace{10pt}\({\nu_i}(\upsilon) = -\sum c_i(\upsilon_i - p_i\ln \upsilon_i)\), \hspace{10pt} \({\nu_i}(\upsilon) = const\)
+
+(единств. представ. точка, так бывает редко)
+
+\vspace{0.5cm}
+\subsection*{{\Large \underline{Модель циклической конкуренции}}}
+
+\vspace{0.5cm}
+\(\dot{\upsilon_1} = \upsilon_1(1-\upsilon_1 - \alpha\upsilon_2 - \beta\upsilon_3) \), \hspace{3cm}\( \upsilon \in R_+^3\) \hspace{2cm} (a) \(0 < \beta < 1 < \alpha\)
+
+\(\dot{\upsilon_2} = \upsilon_2(1-\beta\upsilon_1 - \upsilon_2 - \alpha\upsilon_3) \), \hspace{6.3cm} (в) \(\alpha+\beta\geq 2\) \(b_2\)
+
+\(\dot{\upsilon_3} = \upsilon_3(1-\alpha\upsilon_1 - \beta\upsilon_2 - \upsilon_3) \),
+\hspace{6.6cm} \(\alpha+\beta\geq 2\) \(b_1\)
+
+\vspace{0.5cm}
+Рассмотрим случай { \underline{\(\upsilon_3 = 0\)}}
+
+\vspace{0.5cm}
+({\romannumeral 1})
+\(
+ \begin{cases}
+    \dot{\upsilon_1} = \upsilon_1(1-\upsilon_1 - \alpha\upsilon_2 ) 
+    \\
+    \dot{\upsilon_2} = \upsilon_2(1-\beta\upsilon_1 - \upsilon_2 ) 
+ \end{cases}
+\)
+
+\vspace{0.5cm}
+\(
+J(\upsilon_1,\upsilon_2) = 
+ \begin{pmatrix}
+ 1-2\upsilon_1-2\upsilon_2 & \alpha\upsilon_1\\
+ -\beta\upsilon_2 & 1-\beta\upsilon_1 - 2\upsilon_2
+ \end{pmatrix}
+\)
+
+\vspace{0.5cm}
+
+\(
+ J(0,1) = 
+ \begin{pmatrix}
+ 1-\alpha & 0 \\ 
+ -\beta & -1
+ \end{pmatrix}
+\)\hspace{0.5cm}\(\Rightarrow\) это сток.
+
+\vspace{0.5cm}
+\(
+ J(1,0) = 
+ \begin{pmatrix}
+ -1 & -\alpha \\ 
+ 0 & 1 - \beta
+ \end{pmatrix}
+\)\hspace{0.5cm}\(\Rightarrow\) это седло.
+
+\vspace{0.5cm}
+\(
+ J(0,0) = 
+ \begin{pmatrix}
+ 1 & 0\\
+ 0 & 1
+ \end{pmatrix}
+\)\hspace{0.5cm}\(\Rightarrow\) это исток.
+
+\newpage
+%=======================след стр================================================
+Рассмотрим случай { \underline{\(\upsilon_2 = 0\)}}
+
+\vspace{0.5cm}
+({\romannumeral 2})
+\(
+ \begin{cases}
+ 	\dot{\upsilon_1} = \upsilon_1(1-\upsilon_1 - \beta\upsilon_3)
+ 	\\
+ 	\dot{\upsilon_3} = \upsilon_3(1-\alpha\upsilon_1 - \upsilon_3)
+ \end{cases}
+\)
+
+\vspace{0.5cm}
+\(\exists!\) траектория, которая обходит точки  A, B и C
+%что-то там еще, не понял, что написано
+(гомоклинические траектории).
+
+\vspace{0.5cm}
+{\underline{Неподвижные точки в трехмерном пространстве}}
+
+\vspace{0.5cm}
+\(
+ \begin{matrix}
+ 0(0,0,0)\\
+ A(1,0,0)\\
+ B(0,1,0)\\
+ C(0,0,1)
+ \end{matrix}
+\)\hspace{2cm}
+\(
+ \begin{cases}
+ 	\upsilon_1 + \alpha\upsilon_2 + \beta\upsilon_3 = 1
+ 	\\
+ 	\beta\upsilon_1 + \upsilon_2 + \alpha\upsilon_3 = 1
+ 	\\
+ 	\alpha\upsilon_1 + \beta\upsilon_2 + \upsilon_3 = 1
+ \end{cases}
+\)
+
+\vspace{0.5cm}
+и мб. \(M ? \in intR_+^3\) средняя неподвижная траектория.
+
+\vspace{0.5cm}
+\(
+	\Delta = 
+	\begin{vmatrix}
+	1 & \alpha & \beta \\ 
+	\beta & 1 & \alpha \\
+	\alpha & \beta & 1
+	\end{vmatrix}
+	= 1 - \beta^3 + \alpha^3 - 3\alpha\beta + 0
+\)
+
+\vspace{0.5cm}
+\((1 + \alpha + \beta)(\upsilon_1 + \upsilon_2 + \upsilon_3) = 3 \);\hspace{0.5cm}
+\(\upsilon_1 = \upsilon_2 = \upsilon_3 = \frac{1}{1 + \alpha + \beta} = \gamma \)
+
+\vspace{0.5cm}
+\(
+J (\upsilon_1,\upsilon_2,\upsilon_3) = 
+	\begin{pmatrix}
+		1 - 2\upsilon_1 - \alpha\upsilon2 - \beta\upsilon-3 & -\alpha\upsilon_1 & -\beta\upsilon_1 \\
+		-\beta\upsilon_2 & 1 - \beta\upsilon_1 - 2\upsilon_2 - \alpha\upsilon_3 & -\alpha\upsilon_2\\
+		-\alpha\upsilon_3 & -\beta\upsilon_3 & 1 - \alpha\upsilon_1 - \beta\upsilon_2 - 2\upsilon_3
+	\end{pmatrix}
+\)
+
+\vspace{0.5cm}
+\(
+J(0,0,0) = 
+	\begin{pmatrix}
+		1 & 0 & 0\\
+		0 & 1 & 0\\
+		0 & 0 & 1
+	\end{pmatrix}
+\)
+\hspace{0.2cm} - исток
+
+\vspace{0.5cm}
+\(
+J(A) = 
+	\begin{pmatrix}
+	-1 & -\alpha & -\beta \\
+	0  & 1-\beta & 0      \\
+	0  &   0     & 1-\alpha
+	\end{pmatrix}
+\)
+\hspace{0.2cm} - седло. \(J(B), J(C)\) тоже седло.
+
+\vspace{0.5cm}
+\begin{LARGE}
+\(
+J(M) =
+	\begin{pmatrix}
+		\frac{-1}{1+\alpha + \beta} & \frac{-\alpha}{1+\alpha+\beta} & \frac{-\beta}{1+\alpha+\beta}\\
+		 \frac{-\beta}{1+\alpha+\beta} & \frac{-1}{1+\alpha + \beta} & \frac{-\alpha}{1+\alpha+\beta}\\
+		 \frac{-\alpha}{1+\alpha+\beta} & \frac{-\beta}{1+\alpha+\beta} & \frac{-1}{1+\alpha + \beta}\\
+	\end{pmatrix}
+=\frac{-1}{1+\alpha+\beta}
+	\begin{pmatrix}
+		1 & \alpha & \beta\\
+		\beta & 1 & \alpha\\
+		\alpha & \beta & 1
+	\end{pmatrix}
+\)
+\end{LARGE}
+
+\vspace{0.5cm}
+{\underline{\begin{large}
+Лемма.
+\end{large}}}
+\hspace{0.1cm}{\large (о собственных значениях и собственных векторах циркуленты)}
+
+\vspace{0.5cm}
+\begin{Large}
+\(
+C = 
+	\begin{pmatrix}
+	c_0 & c_1 & c_2 & ... & c_{n-1} \\
+	c_{n-1} & c_0 & c_1 & ... & c_{n-2} \\
+	c_{n-2} & c_{n-1} & c_0 & ... & c_{n-3}\\
+	... & ... & ... & ... & ... \\
+	c_1 & c_2 & c_3 & ... & c_0
+	\end{pmatrix}
+\)
+\end{Large}
+\hspace{0.2cm}
+\begin{large}
+\(
+\rho_k\) - корни, \(\rho^n = 1, \rho_k = e^{\frac{i\alpha\pi k}{n}}, k = 0,1,2,...,n-1.\)
+
+\end{large}
+
+\vspace{0.2cm}
+
+\(
+\lambda_k = c_0 + c_1\rho_k + c_2\rho_k^2 + c_3\rho_k^3 + ... +c_{n-1}\rho_k^{n-1}
+\);\hspace{0.1cm}\(k = 0,1,2,...,n-1; 
+\lambda_k \longrightarrow U^k = (1,\rho_k,\rho_k^2,...,\rho_k^{n-1}).\)
+\newpage
+%=======================след стр================================================
+\begin{center}
+\(
+ c_0 + c_1\rho_k + c_2\rho_k^2 + c_3\rho_k^3 + ... +c_{n-1}\rho_k^{n-1} = r_k  | *\rho_k
+ \),\hspace{0.1cm}\((\rho_n^n = 10\)
+
+\vspace{0.5cm}
+\(
+\begin{matrix}
+	c_{n+1}+ c_0\rho_k + c_1\rho-k^2 + ... + c_{n-2}\rho_k^{n-1} = r_k\rho_k\\
+	...\\
+	c_1+ c_2\rho_k + c_3\rho-k^2 + ... + c_0\rho_k^{n-1} = r_k\rho_k
+\end{matrix}
+ \)
+
+\end{center}
+\vspace{0.5cm}
+\(
+C
+	\begin{pmatrix}
+		1\\ \rho_k \\ \rho_k^2 \\ \vdots \\ \rho_k^{n-1}
+	\end{pmatrix}
+	=U^k = 
+	r_k
+	\begin{pmatrix}
+		1\\ \rho_k \\ \rho_k^2 \\ \vdots \\ \rho_k^{n-1}
+	\end{pmatrix}
+\)\hspace{1cm}
+\(
+	\begin{matrix}
+		CU^k = r_kU^k \\
+		U^k = (1, \rho_k, \rho_k^2, \cdots, \rho_k^{n-1}) \\
+		(c - r_kE)U^k = 0\\ 
+		r_k - 
+	\end{matrix}
+\)собств. знач.
+
+\vspace{0.5cm}
+\begin{large}
+\(
+J(M) 
+=\frac{-1}{1+\alpha+\beta}
+	\begin{pmatrix}
+		1 & \alpha & \beta\\
+		\beta & 1 & \alpha\\
+		\alpha & \beta & 1
+	\end{pmatrix}
+\)
+
+
+\vspace{0.5cm}
+\(
+	\rho_0 = 1, \rho_1 = \exp^{\frac{2\pi i}{3}} = -\frac{1}{2}+i\frac{\sqrt{3}}{2},
+\)\hspace{0.1cm}
+\(
+	\rho_2 = \exp^\frac{4\pi i}{3} = -\frac{1}{2} - i\frac{\sqrt{3}}{2}
+\)
+
+\vspace{0.5cm}
+\(
+\lambda_0 = (1 + \alpha + \beta)(-\frac{1}{1 + \alpha + \beta}) = -1
+\)
+
+\vspace{0.5cm}
+\(
+\lambda_1=r_1 = (1 + \alpha( -\frac{1}{2}+i\frac{\sqrt{3}}{2}) + \beta( -\frac{1}{2} - i\frac{\sqrt{3}}{2}))(-\frac{1}{1 + \alpha + \beta}) = \frac{1}{1 + \alpha + \beta}(-1+\frac{\alpha+\beta}{2})
+\)
+
+\vspace{0.5cm}
+\(
+\lambda_2 = r_2 = (1 + \alpha( -\frac{1}{2} - i\frac{\sqrt{3}}{2}) + \beta( -\frac{1}{2} + i\frac{\sqrt{3}}{2}))(-\frac{1}{1 + \alpha + \beta})=\frac{1}{1 + \alpha + \beta}(-1+\frac{\alpha+\beta}{2})
+\)
+
+\vspace{0.5cm}
+\(
+U = (1, \exp^\frac{2i\pi}{3}, \exp^\frac{4i\pi}{4})
+\)
+
+\vspace{0.5cm}
+\textit{в1)}
+
+\(
+\alpha + \beta < 2
+\)
+%$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$место для графиков
+
+\vspace{0.5cm}
+\textit{в2)}
+
+\(
+\alpha + \beta \geq 2
+\)
+\hspace{0.1cm} картина неустойчива, решение - \(\alpha + \beta = 2\)
+
+\vspace{0.5cm}
+\(
+	\begin{matrix}
+		S = u_1 + u_2 + u_3\\
+		p = u_1u_2u_3
+	\end{matrix}
+\)\hspace{1cm}
+\(
+\begin{matrix}
+	\dot{S} = S - (u_1^2 + u_2^2 + u_3^2 +(\alpha + \beta)u_1u_2 + (\alpha + \beta)u_1u_3 + (\alpha + \beta)u_2u_3) =\\ 
+		= S - S^2
+\end{matrix}
+\)
+
+\vspace{0.5cm}
+\(
+\dot{p} = \dot{u_1}u_2u_3 + u_1\dot{u_2}u_3+u_1u_2\dot{u_3}=p(3-u_1(1+\alpha + \beta)=-u_2(1+\alpha+\beta - u_3(1+\alpha + \beta)) = 3p(1-s)
+\)
+
+\newpage
+\(
+	\begin{cases}
+	\dot{S} = S(1-S)
+	\\
+	\dot{p} = 3p(1-s)
+	\end{cases}
+\)
+
+\vspace{0.5cm}
+\(
+u_1 + u_2 +u_3 = 1
+\) - плоскость
+
+\vspace{0.5cm}
+\(
+u_1u_2u_3 = 0
+\) - (точки, леж. на осях)
+
+\vspace{0.5cm}
+\(
+V(u) = \frac{p}{S^3}
+\) \hspace{0.2cm}
+\(
+\dot{V} = S^{-1}p \left[ 1 - \frac{(\alpha + \beta)}{2} \right]((u_1 - u_2)^2 + (u_2-u_3)^2 +(u_3-u_1)^2))\leq 0
+\)
+
+\vspace{0.5cm}
+\(
+\alpha + \beta > 2
+\)
+
+\vspace{0.5cm}
+\(
+ p = 0 - 
+\) единственная траектория. Предельное мн-во.
+
+\vspace{0.5cm}
+\underline{Общие уравнения Лотни-Вольтера}
+
+\vspace{0.5cm}
+\(
+\dot{u_i} = u_i(r_i-(Au)_i) , 
+\)\hspace{0.2cm}
+\(
+i = 1,2,...,n
+\)
+\hspace{0.2cm}
+\(
+u \in R_+^n
+\)
+
+
+\vspace{0.5cm}
+\(
+A - 
+\) ланшафт приспособленности \underline{(1)}
+
+
+\vspace{0.5cm}
+\(
+A = 
+	\begin{pmatrix}
+	a_11 & \ldots & a_{1n} \\
+	\vdots & & \vdots \\
+	a_{1n} & \ldots & a_{nn}
+	\end{pmatrix}
+\)\hspace{0.7cm}
+\(
+(Au)_i = \Sigma_{j=1}^n a_{ij}u_j
+\)
+
+\vspace{0.5cm}
+\underline{уравнения Колмогорова}
+
+\vspace{0.5cm}
+\(
+\dot{u_i} = u_if_i(u)
+\)
+
+\(
+i = 1,2,...,n
+\)
+
+\vspace{0.5cm}
+Решения не должны уходить на $\infty$ 
+
+$\Rightarrow$ вводитс понятие $1)$ \textit{равномерной ограниченности}:
+
+$\exists S_R : $ траектории $u_0 \in S_R$, \hspace{0.2cm} $u(t;u_0) \in S_R$
+
+2) \textit{перманетности} (усл. невырожденности): если $\forall\delta \exists\varepsilon > 0:$
+
+$u|_{t=0} = u_0 \geq \delta > 0$ \hspace{0.2cm} $\lim_{t \to \infty} u(t) \geq\varepsilon$
+
+\vspace{0.5cm}
+$M - $ поглощающая точка, если траектория в нее входит. $u_k=0$
+
+$M -$ неподвижная точка системы (1), когда траектория может в нее попасть
+
+Найти с.з. и с.в. в $M_k$
+
+(с.в. обраует ненулевой угол с плоскоостью.)
+
+
+$\dot{u_k} = u_k(r_k - (Au)_k)$
+
+возмем $ V = u_k$
+тогда $ \dot{V} = \dot{u_k} = u_k(r_k - (Au)_k) > 0$\hspace{0.2cm} в окр-ти нуля будет хуодить
+
+$r_k = (A\overline{u})_k$ \hspace{0.2cm} $\overline{u} = M_k$
+
+если $<0$, то эта точка поглощающая.
+
+\underline{Пример.}
+
+\vspace{0.5cm}
+\(
+	\begin{cases}
+	\dot{u_1} = u_1(1-u_2-\alpha u_1) = u_1 f_1(u_1,u_2)
+	\\
+	\dot{u_2} = u_2(\gamma - u_1 - \beta u_2) = u_2f_2(u_1,u_2)
+	\end{cases}
+\)
+
+\newpage
+%===================================================================================
+$M_1 = \overline{u_1} = (0 , \frac{\gamma}{\beta}),$\hspace{0.2cm}$M_2 = \overline{u_2} = (\frac{1}{\alpha} , 0)$
+
+\vspace{0.5cm}
+$
+	\begin{matrix}
+	M_1 = \overline{u_1} = (0 , \frac{\gamma}{\beta}), & f_1(M_1) = 1 - \frac{\gamma}{\beta} < 0,&\beta < \gamma,  & M_1- {\text {поглощающая т.}}\\
+	M_2 = \overline{u_2} = (\frac{1}{\alpha} , 0), & f_2(M_2) = \gamma - \frac{1}{\alpha}<0,&\alpha\gamma < 1, & M_1- {\text {поглощающая т.}}
+	\end{matrix}
+$
+
+
+\vspace{0.5cm}
+\textbf{\underline{Теорема}}
+
+Пусть задана общая система Лотни-Вольтера:
+
+\underline{(1)} $\dot{u_i} = u_i(r_i - (Au)_i)$ \hspace{0.2cm} $i = 1,2,...,n$ \hspace{0.2cm} $u \in R_+^n$
+ 
+Если $\exists ! $ неподвижная точка системы:
+
+\underline{(2)} $(Ap)_i = r_i, $\hspace{0.2cm}$ i = 1,2,...,n$\hspace{0.2cm}$ p \in intR_+^n$
+
+
+$\Rightarrow$ система Л-В (1) - невырожденная и равномерно-ограниченная (биологически это
+
+устойчива) и тогда выполняется следущее свойство:
+
+\vspace{0.2cm}
+\begin{center}
+\begin{Large}
+$
+\lim_{t \to +\infty} \frac{1}{t}\int_0^t u_0(t)dt = p_i
+$
+\end{Large}
+
+\end{center}
+ 
+Средний интеграл в системе дает эту неподвижную точку.
+
+\vspace{0.5cm}
+Рассмотрим систему (2). Предположим, что эта система не имеет решений.
+
+Тогда 2 случая:
+
+\begin{center}
+1) система (2) несовместная
+
+2)система (2) имеет бесчисленное множество решений.
+\end{center}
+
+Тогда $\exists \Sigma$ систмы (2) $ dim \Sigma = n - r $,где  $г - $ ранг этой системы.
+
+\vspace{0.5cm}
+$u_i = 0$ имеем гиперплоскость системы.
+
+оно пересечет множество, где $u_i = 0$
+
+$
+\Sigma\cap(u_i = 0) \neq\Lambda \textit{(не пусто)}
+$, но тогда не выполнено условие невырожденности.
+Пусть система несовместна $\Rightarrow$ у нее нет решений $>0$.
+
+Рассмотрим множество $L = \lbrace u : r_i - (Au)_i; i = 1,2,...,n\rbrace$
+тогда $>0$.
+
+$\Longrightarrow$ обозначим $y_i = r_i - (Au)_i$
+
+$L = \lbrace y : y_i>0\rbrace$
+
+$y $ отделено от нуля, выпукло. По теореме об отделимости $ \exists $ гиперплоскость, 
+
+азделяющая это множество и 0.
+
+\vspace{0.5cm}
+Рассмотрим $ c \bot $ этой плоскости $v(y) = (c,y) = \Sigma_{i=1}^n c_i y_i > 0$
+
+$ \dot{v}(u) = \Sigma_{i=1}^n c_i \ln u_i $
+
+$ \dot{v}(u) = \Sigma c_i(r_i - (Au)_i) = \Sigma c_i y_i > 0 $
+
+$\Rightarrow$ вдоль траектории система $\infty$ растет.
+
+
+
+
+
+
+
+
+
+\end{large}
+
+\end{document}
+
+
+
+
+
+\hspace{0.2cm}
+\vspace{0.5cm}
+\(
+
+\)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
