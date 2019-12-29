@@ -1,6 +1,22 @@
 
+\subsection{Модель пищевой цепи}
+\(
+	\begin{cases}
+	\dot{u_1} = u_1(r_1 - a_{1,2}u_2 - a_{1,1}u_1) = u_1w_1(u)
+	\\
+	\dot{u_2} = u_2(-r_2 + a_{2,1}u_1 - a_{2,3}u_3 - a_{2,2}u_2 ) = u_2w_2(u)
+	\\
+	.....
+	\\
+	\dot{u_k} = u_k(-r_k + a_{k,k-1}u_{k-1} - a_{k,k-1}u_{k+1} - a_{k,k}u_k ) = u_kw_k(u)
+	\\
+	.....		
+	\\
+	\dot{u_n} = u_n(-r_n + a_{n,n-1}u_{n-1} - a_{n,n}u_n ) = u_nw_n(u)
+	\end{cases}
+\)
 
-Если система \((1)\) имеет ! пол. равн  \(p \in R^n \), тогда \(p\) является единственно представимой треакторией системы \((1)\), \(a_{ii} > 0\), \(i = \overline{1,n}\).
+Если система имеет единственное положение равновесия  \(p \in R^n \), тогда \(p\) является единственно представимой траекторией системы \((1)\), \(a_{ii} > 0\), \(i = \overline{1,n}\).
 Если \(a_{ii} = 0\), то \(\exists\) ПИ сиситемы \(\nu(\upsilon):\dot{\nu}(\upsilon) = 0\),
 траектории системы \(\nu(\upsilon) = const\).
 
@@ -49,7 +65,8 @@
 (единств. представ. точка, так бывает редко)
 
 \vspace{0.5cm}
-\subsection*{{\Large \underline{Модель циклической конкуренции}}}
+
+\subsection{Модель циклической конкуренции}
 
 \vspace{0.5cm}
 \(\dot{\upsilon_1} = \upsilon_1(1-\upsilon_1 - \alpha\upsilon_2 - \beta\upsilon_3) \), \hspace{3cm}\( \upsilon \in R_+^3\) \hspace{2cm} (a) \(0 < \beta < 1 < \alpha\)
@@ -110,12 +127,11 @@ J(\upsilon_1,\upsilon_2) =
  \end{pmatrix}
 \)\hspace{0.5cm}\(\Rightarrow\) это исток.
 \begin{figure} [h!]
-			\center{\includegraphics[width=0.8\textwidth]{IMG_5475.eps}}
+			\center{\includegraphics[width=0.8\textwidth]{ch9/IMG_5475.eps}}
 			\caption{Модель циклической конкуренции}	
 \end{figure}
 
 \newpage
-%=======================след стр================================================
 Рассмотрим случай { \underline{\(\upsilon_2 = 0\)}}
 
 \vspace{0.5cm}
@@ -133,7 +149,7 @@ J(\upsilon_1,\upsilon_2) =
 
 (гомоклинические траектории).
 \begin{figure} [h!]
-			\center{\includegraphics[width=0.8\textwidth]{IMG_5476.eps}}
+			\center{\includegraphics[width=0.8\textwidth]{ch9/IMG_5476.eps}}
 			\caption{Модель циклической конкуренции}	
 \end{figure}
 
@@ -260,7 +276,6 @@ C =
 \);\hspace{0.1cm}\(k = 0,1,2,...,n-1; 
 \lambda_k \longrightarrow U^k = (1,\rho_k,\rho_k^2,...,\rho_k^{n-1}).\)
 \newpage
-%=======================след стр================================================
 \begin{center}
 \(
  c_0 + c_1\rho_k + c_2\rho_k^2 + c_3\rho_k^3 + ... +c_{n-1}\rho_k^{n-1} = r_k  | *\rho_k
@@ -345,11 +360,11 @@ U = (1, \exp^\frac{2i\pi}{3}, \exp^\frac{4i\pi}{4})
 \alpha + \beta < 2
 \)
 \begin{figure} [h!]
-			\center{\includegraphics[width=0.8\textwidth]{IMG_5477.eps}}
+			\center{\includegraphics[width=0.8\textwidth]{ch9/IMG_5477.eps}}
 			\caption{Устойчивое вращение}	
 \end{figure}
 \begin{figure} [h!]
-			\center{\includegraphics[width=0.8\textwidth]{IMG_5478.eps}}
+			\center{\includegraphics[width=0.8\textwidth]{ch9/IMG_5478.eps}}
 			\caption{}	
 \end{figure}
 
@@ -390,7 +405,7 @@ U = (1, \exp^\frac{2i\pi}{3}, \exp^\frac{4i\pi}{4})
 \)
 
 \begin{figure} [h!]
-			\center{\includegraphics[width=0.8\textwidth]{IMG_5479.eps}}
+			\center{\includegraphics[width=0.8\textwidth]{ch9/IMG_5479.eps}}
 			\caption{Картина неустойчива}	
 \end{figure}
 
@@ -423,7 +438,8 @@ V(u) = \frac{p}{S^3}
 \) единственная траектория. Предельное мн-во.
 
 \vspace{0.5cm}
-\underline{Общие уравнения Лотни-Вольтера}
+\subsection{Общие уравнения Лотки-Вольтера}
+
 
 \vspace{0.5cm}
 \(
@@ -483,7 +499,7 @@ $u|_{t=0} = u_0 \geq \delta > 0$ \hspace{0.2cm} $\lim_{t \to \infty} u(t) \geq\v
 \vspace{0.5cm}
 
 \begin{figure} [h!]
-			\center{\includegraphics[width=0.8\textwidth]{IMG_5480.eps}}
+			\center{\includegraphics[width=0.8\textwidth]{ch9/IMG_5480.eps}}
 			\caption{Условие невырождености}	
 \end{figure}
 
@@ -516,12 +532,11 @@ $r_k = (A\overline{u})_k$ \hspace{0.2cm} $\overline{u} = M_k$
 	\end{cases}
 \)
 \begin{figure} [h!]
-			\center{\includegraphics[width=0.8\textwidth]{IMG_5481.eps}}
+			\center{\includegraphics[width=0.8\textwidth]{ch9/IMG_5481.eps}}
 			\caption{Иллюстрация к примеру}	
 \end{figure}
 
 \newpage
-%===================================================================================
 $M_1 = \overline{u_1} = (0 , \frac{\gamma}{\beta}),$\hspace{0.2cm}$M_2 = \overline{u_2} = (\frac{1}{\alpha} , 0)$
 
 \vspace{0.5cm}
@@ -559,7 +574,7 @@ $
 
 \end{center}
 \begin{figure} [h!]
-			\center{\includegraphics[width=0.8\textwidth]{IMG_5482.eps}}
+			\center{\includegraphics[width=0.8\textwidth]{ch9/IMG_5482.eps}}
 			\caption{}	
 \end{figure} 
 
@@ -600,7 +615,7 @@ $y $ отделено от нуля, выпукло. По теореме об о
 азделяющая это множество и 0.
 
 \begin{figure} [h!]
-			\center{\includegraphics[width=0.8\textwidth]{IMG_5483.eps}}
+			\center{\includegraphics[width=0.8\textwidth]{ch9/IMG_5483.eps}}
 			\caption{}	
 \end{figure}
 
