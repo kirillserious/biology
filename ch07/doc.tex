@@ -1,0 +1,260 @@
+\section{Предельное поведение траекторий}
+
+Рассмотрим в окрестности точки \( (0, 0) \) систему
+\[ \left\lbrace \begin{aligned}
+    & \dot{x}_1 = -x_2 + x_1 \left( 1 - \sqrt{x_1^2 + x_2^2} \right), \\
+    & \dot{x}_2 = x_1 + x_2 \left( 1 - \sqrt{x_1^2 + x_2^2} \right).
+\end{aligned} \right. \]
+
+Рассмотрим \( V(x_1, x_2) = \dfrac{1}{2} (x_1^2 + x_2^2) = \rho (x_1, x_2); \)
+\[ \dot{V}(x_1, x_2) = x_1 \dot{x}_1 + x_2 \dot{x}_2 = (x_1^2 + x_2^2) \left( 1 - \sqrt{x_1^2 + x_2^2} \right) = 2 \rho (1 - \sqrt{2 \rho}) \Rightarrow \dot{\rho} = 2 \rho (1 - \sqrt{2 \rho}); \]
+\[ \rho < \dfrac{1}{\sqrt{2}} \Rightarrow \dot{V} > 0, \rho > \dfrac{1}{\sqrt{2}} \Rightarrow \dot{V} < 0. \]
+Значит, \( \rho = \dfrac{1}{\sqrt{2}} \) ~--- устойчивый аттрактор \( \Rightarrow \rho \xrightarrow[t \rightarrow \infty]{} \dfrac{1}{\sqrt{2}} \) при \( \rho(0) = \rho_0 > 0. \)
+
+Таким образом, попадаем в множество \( \sqrt{\dfrac{x_1^2 + x_2^2}{2}} \rightarrow \dfrac{1}{\sqrt{2}}. \)
+
+\begin{definition}
+Замкнутая кривая \( \gamma \) на фазовой плоскости называется \textit{предельным циклом}, если
+    \begin{enumerate}
+    \item она является решением системы
+    \item в любой достаточно малой окрестности кривой \( \gamma \) нет других замкнутых фазовых траекторий
+    \item она ~--- замкнутый цикл
+    \end{enumerate}
+\end{definition}
+
+\textbf{Типы циклов:}
+\begin{enumerate}
+\item Неустойчивые
+
+\item Полуучтойчивые
+
+\item Устойчивые
+
+\end{enumerate}
+
+\begin{definition}
+\textit{Предельной точкой траектории системы} при \( t \rightarrow +\infty \)
+\[ \left\lbrace \begin{aligned}
+    & \dot{x} = f(x), x \in D \subset \mathbb{R}^n, \\
+    & x(0) = x_0,
+\end{aligned} \right. \]
+называется точка \( \bar{x}, \) если \( \exists \left\lbrace t_k \right\rbrace_{k=1}^{\infty} \): \( t_k \xrightarrow[k \rightarrow +\infty]{} +\infty \) и \( x(t_k; x_0) \xrightarrow[k \rightarrow +\infty]{} \bar{x} \) как числовая последовательность.
+\end{definition}
+
+\begin{definition}
+    Совокупность всех предельных точек системы составляет \textit{предельное множество системы}.
+\end{definition}
+
+Пусть \( \omega_{lim}, \alpha_{lim} \) ~--- предельные множества при \( t \rightarrow +\infty, t \rightarrow -\infty \) соответственно.
+
+\textbf{Свойства предельных множеств:}
+\begin{enumerate}
+\item предельное множество замкнуто как точечное множество в \( \mathbb{R}^n \)
+    \begin{proof}
+        Пусть \( \bar{\gamma} \) ~--- предельное множество; \( \left\lbrace \bar{x}_k \right\rbrace_{k=1}^n \in \bar{\gamma}. \)
+    
+        Пусть \( \bar{x}_k \xrightarrow[k \rightarrow \infty]{} \bar{x}; \) покажем, что \( \bar{x} \in \bar{\gamma} \).
+        \( \bar{x}_n \in \bar{\gamma} \Rightarrow \left\lbrace \bar{x}_n \text{~--- предельная точка} \right\rbrace \Rightarrow \exists \left\lbrace t_k^i \right\rbrace \): \( x(t_k^1) = x(t_k^1; x_0) \xrightarrow[k \rightarrow +\infty]{} \bar{x}_1 \in \bar{\gamma}, \ldots, x(t_k^n) = x(t_k^n; x_0) \xrightarrow[k \rightarrow \infty]{} \bar{x}_n \in \bar{\gamma}. \)
+    
+       \( \rho(x_k^i, \bar{x}_i) \xrightarrow[k \rightarrow \infty]{} 0 \), \( \rho(x_k^n, \bar{x}) \leqslant \rho(x_k^n, \bar{x}_n) + \rho(\bar{x}_n, \bar{x}) \xrightarrow[k \rightarrow \infty]{} 0 \) \( \Rightarrow x_k^n \rightarrow \bar{x} \Rightarrow \bar{x} \in \bar{\gamma}. \)
+    \end{proof}
+
+\item Множесто предельных точек инвариантно и состоит из целых траекторий
+    \begin{proof}
+        Пусть \( \bar{x} \in \bar{\gamma}; \) \( \exists \left\lbrace t_k \right\rbrace \): \( x(t_k; x_0) \xrightarrow[k \rightarrow \infty]{} \in \bar{\gamma}. \)
+        
+        \( x(t + t_k; x_0) = x(t; x(t_k; x_0)) \xrightarrow[k \rightarrow +\infty]{} x(t; \bar{x}) \in \bar{\gamma}. \)
+    \end{proof}
+
+\item Для того, чтобы множество состояло из одной единственной точки, необходимо и достаточно, чтобы любая траектория входила в эту точку при \( t \rightarrow +\infty\): \( x(t; x_0) \xrightarrow[t \rightarrow +\infty]{} \bar{x}. \)
+    \begin{proof}
+        \( \rho(x(t), \bar{x}) \xrightarrow[t \rightarrow \infty]{} 0 \).
+        Пусть \( \bar{x} \) ~--- единственная предельная точка.
+        От противного: \( \exists \rho(x(t_k), \bar{x}) \geqslant \varepsilon, t_k \xrightarrow[k \rightarrow \infty]{} +\infty \); \( \bar{x} \) ~--- предельная \( \Rightarrow \exists \left\lbrace \tilde{t}_k \right\rbrace \): \( \rho(x(\tilde{t}_k), \bar{x}) < \varepsilon \Rightarrow \) в силу непрерывности, \( \exists x(\bar{\bar{t}}_k) \): \( \rho (x(\bar{\bar{t}}_k), \bar{x}) = \varepsilon \) ~--- компактное множество \( \Rightarrow \) из последовательности можно выделить сходящуюся подпоследовательность: \( x(\bar{\bar{t}}_{k_n}) \rightarrow \bar{\bar{x}} \) \( \Rightarrow \bar{\bar{x}} \) ~--- тоже предельная точка. Получили противоречие единственности.
+    \end{proof}
+
+\item Для того, чтобы предельное множество было пустым, необходимо и достаточно, чтобы на траекториях системы выполнялось \( \sum \limits_{k = 1}^n x_i^2(t) \xrightarrow[t \rightarrow +\infty]{} +\infty \).
+     \begin{proof}
+         От противного: \( \sum \limits x_i^2(t) \leqslant R \); рассмотрим \( \left\lbrace t_n \right\rbrace \): \(( \sum \limits_{k = 1}^n x_i^2(t_n) \) ~--- компакт \( \Rightarrow \exists \left\lbrace t_{n_k} \right\rbrace \): \( x_i(t_{n_{k_i}}) \rightarrow \bar{x} \), \( \forall t_{n_{k_i}} \rightarrow +\infty \), \( \forall i = 1, \ldots, n \).
+         Получили противоречие с пустотой множества предельных точек.
+     \end{proof}
+\end{enumerate}
+
+\subsection{Необходимые и достаточные условия инвариантности}
+
+Рассмотрим систему
+\[ \left\lbrace \begin{aligned}
+    & \dot{x} = f(x), x \in D \subset \mathbb{R}^n, D \text{~--- гладкая}, \\
+    & x(0) = x_0 \in D.
+\end{aligned} \right. \]
+Пусть \( \gamma = \partial D \), \( \vec{n} \) ~--- вектор нормали к \( \gamma \); если \( \forall x_\gamma \in \gamma \)
+\begin{itemize}
+\item \( \angle (\vec{f}, \vec{n}) \) ~--- острый, то не остаётся
+\item \( \angle (\vec{f}, \vec{n}) \) ~--- тупой, то остаётся
+\item \( \angle (\vec{f}, \vec{n}) = \dfrac{\pi}{2} \) ~--- прямой, то касается по границе 
+\end{itemize}
+
+Примеры:
+\begin{enumerate}
+\item  \( D = \left\lbrace (x_1, x_2): x_2 \leqslant 0 \right\rbrace \)
+
+    \[ \left\lbrace \begin{aligned}
+        & \dot{x}_1 = 2 x_1 x_2, \\
+        & \dot{x}_2 = x_2^2.
+    \end{aligned} \right. \]
+    \( \vec{n} = (0, -1), \vec{f} = (2 x_1 x_2, x_2^2) \) \( \Rightarrow (\vec{n}, \vec{g}) = -x_2^2 \leqslant 0 \).
+
+\item \( D = \left\lbrace (x_1, x_2): x_1^2 + x_2^2 \leqslant R^2 \right\rbrace \)
+
+    \[ \left\lbrace \begin{aligned} 
+        & \dot{x}_1 = -x_1 + x_2 + x_1 (x_1^2 + x_2^2), \\
+        & \dot{x}_2 = -x_1 - x_2 + x_2 (x_1^2 + x_2^2).
+    \end{aligned} \right. \]
+    \( \vec{n} = (x_1, x_2); (\vec{f}, \vec{n}) = -(x_1^2 + x_2^2) + (x_1^2 + x_2^2)^2 = (x_1^2 + x_2^2) (x_1^2 + x_2^2 - 1) \leqslant 0 \) \(\Rightarrow x_1^2 + x_2^2 \leqslant 1 \Rightarrow \) есть инвариантность при \( R \leqslant 1 \).
+\end{enumerate}
+
+\begin{theorem}[Бендиксона--Дюлака]
+Пусть \( D \subset \mathbb{R}^2 \) ~--- открытая односвязная область, и пусть задана динамическая система
+\[ \left\lbrace \begin{aligned}
+    & \dot{x}_1 = f_1(x_1, x_2), \\
+    & \dot{x}_2 = f_2(x_1, x_2)
+\end{aligned} \right. \]
+Если \( \mathrm{div} f = \dfrac{\partial f_1}{\partial x_1} + \dfrac{\partial f_2}{\partial x_2} \) знакоопределена, т.~е. либо \( \mathrm{div} f < 0 \), либо \( \mathrm{div} f \) \( \forall (x_1, x_2) \in D \), то не существует замкнутых траекторий в области \( D \). 
+\end{theorem}
+
+\begin{proof}
+    Формула Грина: 
+    \[ \iint \limits_{D} \left( \dfrac{\partial Q}{\partial x} (x, y) - \dfrac{\partial P}{\partial y} (x, y) \right) \, dx dy = \int \limits_{\partial D} P(x, y) \, dx + Q(x, y) \, dy. \]
+    Пусть \( \exists \bar{\gamma} \in D \) ~--- траектория. Тогда по формуле Грина для \( D_{\bar{\gamma}} \subset D\) и \( Q(x_1, x_2) = f_1(x_1, x_2), P(x_1, x_2) = -f_2(x_1, x_2) \)
+    \[ \iint \limits_{D_{\bar{\gamma}}} \left( \dfrac{\partial f_1}{\partial x_1} (x_1, x_2) - \dfrac{\partial f_2}{\partial x_2} (x_1, x_2) \right) \, dx dy = \iint \limits_{D_{\bar{\gamma}}} \mathrm{div} f(x_1, x_2) \, dx_1 dx_2 = \int \limits_{\bar{\gamma}} -f_2(x_1, x_2) \, dx_1 + f_1(x_1, x_2) \, dx_2 = \]
+    \[ = \int \limits_{\bar{\gamma}} \left( -f_2(x_1, x_2) f_1(x_1, x_2) + f_1(x_1, x_2) f_2(x_1, x_2) \right) \, dt \equiv 0. \]
+    Получили противоречие знакоопределённости \( \mathrm{div} f \).
+\end{proof}
+
+Пусть есть две системы:
+\begin{equation} \label{sys1}
+\begin{split}
+    & \dot{x}_1 = f_1(x_1, x_2), {} \\
+    & \dot{x}_2 = f_2(x_1, x_2),
+\end{split}
+\end{equation} 
+\begin{equation} \label{sys2}
+\begin{split}
+    & \dot{x}_1 = f_1(x_1, x_2) \mu(x_1, x_2), {} \\
+    & \dot{x}_2 = f_2(x_1, x_2) \mu(x_1, x_2),
+\end{split}
+\end{equation}
+\( (x_1, x_2) \in D \subset \mathbb{R}^2 \), \( \mu(x_1, x_2) > 0 \) либо \( \mu(x_1, x_2) < 0 \) \( \forall (x_1, x_2) \in D \).
+
+\( \dfrac{1}{\mu} \dfrac{dx_i}{dt} = f_i \) \( \Rightarrow t = \mu(x_1, x_2) \tau \). \( \dfrac{d}{dt} = \dfrac{d}{d\tau} \dfrac{d\tau}{dt} = \dfrac{1}{\mu(x_1, x_2)} \dfrac{d}{d\tau}. \)
+
+\begin{proposition}
+    Пусть \( (x_1, x_2) \) ~--- неподвижная точка сиситемы \ref{sys1}, то она является неподвижной точкой системы \ref{sys2}.
+\end{proposition}
+
+\begin{proposition}
+    Характер не меняется.
+\end{proposition}
+
+\begin{proof}
+    \( J_{(1)} = \begin{pmatrix}
+        \dfrac{\partial f_1}{\partial x_1} & \dfrac{\partial f_1}{\partial x_2} \\
+        \dfrac{\partial f_2}{\partial x_1} & \dfrac{\partial f_2}{\partial x_2}
+    \end{pmatrix}, 
+    J_{(2)} = \begin{pmatrix}
+        \dfrac{\partial f_1}{\partial x_1} \mu + \dfrac{\partial \mu}{\partial x_1} f_1 & \dfrac{\partial f_1}{\partial x_2} \mu + \dfrac{\partial \mu}{\partial x_2} f_1 \\
+        \dfrac{\partial f_2}{\partial x_1} \mu + \dfrac{\partial \mu}{\partial x_1} f_2 & \dfrac{\partial f_2}{\partial x_2} \mu + \dfrac{\partial \mu}{\partial x_2} f_2 \\
+    \end{pmatrix} \).
+    
+    \( \left. J_{(2)} \right\vert_{(\bar{x}_1, \bar{x}_2)} = \mu(\bar{x}_1, \bar{x}_2)
+    \begin{pmatrix}
+        \dfrac{\partial f_1}{\partial x_1} & \dfrac{\partial f_1}{\partial x_2} \\
+        \dfrac{\partial f_2}{\partial x_1} & \dfrac{\partial f_2}{\partial x_2}
+    \end{pmatrix} \).
+    
+    Собственные значения сохраняются \( \Rightarrow \) характер тоже.
+\end{proof}
+
+\begin{theorem}
+    Пусть заданы системы \ref{sys1}, \ref{sys2}; если \( \mathrm{div}(\mu f) \) знакоопределена на области \( D \), то система не имеет замкнутых траекторий.
+\end{theorem}
+
+Эта теорема доказывается аналогично предыдущей.
+
+\subsection{Вращение векторного поля вдоль кривой}
+
+\begin{definition}
+    \textit{Вращением векторного поля вдоль кривой} $\gamma$ относительно заданной оси $l$ называется делённое на $2\pi$ приращение угла, составленного векторным полем в точке $\bar{x} \in \bar{\gamma}$ с осью $l$, когда эта точка проходит кривую в положительном направлении (против часовой стрелки)
+\end{definition}
+
+\textbf{Обозначение}: \( \chi_\gamma = \frac{1}{2 \pi} \int \limits_{\gamma} \, d\theta \).
+
+\( \theta = \arctg{\dfrac{f_2(x_1, x_2)}{f_1(x_1, x_2)}} + \theta_0 \), \( d\theta = \dfrac{f_1^2}{f_1^2 + f_2^2} d\left( \dfrac{f_2}{f_1} \right); \) \( d\left( \dfrac{f_2}{f_1} \right) = \dfrac{\frac{\partial f_2}{\partial x_1} f_1 - f_2 \frac{\partial f_1}{\partial x_2}}{f_1^2} \, dx_1 + \dfrac{\frac{\partial f_2}{\partial x_2} f_1 - f_2 \frac{\partial f_1}{\partial x_2}}{f_1^2} \, dx_2 \),
+\[ \chi_\gamma = \dfrac{1}{2\pi} \int \limits_{\gamma} \dfrac{1}{f_1^2 + f_2^2} \left( \left( \dfrac{\partial f_2}{\partial x_1} f_1 - f_2 \dfrac{\partial f_1}{\partial x_1} \right) \, dx_1 + \left( \dfrac{\partial f_2}{\partial x_2} f_1 - f_2 \dfrac{\partial f_1}{\partial x_2} \right) \, dx_2 \right) = \]
+\[ = \dfrac{1}{2\pi} \int \limits_{\gamma} P(x_1, x_2) \, dx_1 + Q(x_1, x_2) \, dx_2. \]
+
+\textbf{Свойства:}
+\begin{enumerate}
+\item Если \( \gamma = \gamma_1 \cup \gamma_2 \) \( \Rightarrow \chi_{\gamma} = \chi_{\gamma_1} + \chi_{\gamma_2} \)
+\item Если \( \gamma \) ~--- замкнутая траектория, то \( \chi_\gamma \) ~--- целое число.
+\item Если \( \gamma \) ~--- некоторая замкнутая траектория, которая допускает гладкую деформацию, в процессе которой кривая не проходит через неподвижные точки векторного поля, то вращение векторного поля не меняется (следует из непрерывности).
+\end{enumerate}
+
+\begin{equation} \label{sys3}
+\begin{split}
+    & \dot{x} = f_1(x, y), {} \\
+    & \dot{y} = f_2(x, y).
+\end{split}
+\end{equation}
+
+\begin{theorem}
+Пусть поля задаётся правыми частями динамической системы \ref{sys3}. Если внутри замкнутой кривой $\gamma$ без самопересечений нет точек покоя рассматриваемой системы, то \( \chi_\gamma = 0 \).
+\end{theorem}
+
+\begin{proof}
+Лемма о векторном поле: в районе точки поле ~--- параллельные прямые, их вращение равно 0.
+\end{proof}
+
+\begin{theorem}
+Пусть имеется система
+\[ \left\lbrace \begin{aligned}
+    & \dot{x} = f_1(x, y), \\
+    & \dot{y} = f_2(x, y),
+\end{aligned} \right. \]
+и траектория \( \gamma \) данной системы, являющаяся замкнутой траекторией. Тогда внутри этой замкнутой траектории находится хотя бы одна точка покоя.
+\end{theorem}
+
+\begin{proof}
+\( \chi_\gamma = 1 \) \( \Rightarrow \) по предыдущей теореме, внутри существует хотя бы одна неподвижная точка системы.
+\end{proof}
+
+\subsection{Индекс Пуанкаре}
+
+Пусть $a$ ~--- неподвижная точка системы \ref{sys3}, и пусть кривая \( \gamma \) окружает точку \( a \) ($\gamma$ ~--- не обязательно траектория системы).
+
+\begin{definition}
+\( \mathrm{ip}(a) = \chi_\gamma \) ~--- \textit{индекс Пуанкаре}
+\end{definition}
+
+\begin{proposition}
+Если $a$ ~--- фокус, центр или узел, то $\mathrm{ip}(a) = 1$; если $a$ ~--- седловая точка, то $\mathrm{ip}(a) = -1$.
+\end{proposition}
+
+\begin{proposition}
+Если имеется замкнутая кривая $\gamma$ без самопересечений, на ней нет точек покоя, а внутри их конечное число, то
+\[ \chi_\gamma = \sum \limits_{i = 1}^n \mathrm{ip}(a_i). \]
+\end{proposition}
+
+\begin{proof}
+Докажем утверждение для двух точек:
+%
+\end{proof}
+
+\begin{theorem}
+Пусть \( \gamma \) ~--- замкнутая траектория; внутри есть конечное число точек покоя: центры, фокусы, узлы, сёдла (простые точки). Тогда общее число точек покоя нечётно.
+\end{theorem}
+
+\begin{proof}
+\( \chi_\gamma = \sum \limits_{i = 1}^n = \left\langle \text{$\gamma$ ~--- траектория} \right\rangle = 1. \)
+Пусть $n$ ~--- количество центров, фокусов, узлов, $m$ ~--- количество сёдел, тогда \( 1 = n - m, n = m + 1. \) Значит, \( n + m = 2m + 1 \) \( \Rightarrow \) число точек покоя системы нечётно. 
+\end{proof}
