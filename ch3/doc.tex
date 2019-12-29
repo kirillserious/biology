@@ -1,0 +1,333 @@
+\section{Случай линейной системы}
+Рассмотрим линейную систему вида:
+$$
+\frac{dx_i}{dt}=\sum_{j=1}^n{a_ij x_j}, i=\overline{1,n};
+$$\\
+Эта система аналогична системе 
+
+$$
+	\frac{dx}{dt}=Ax, 
+$$\\
+где матрица $A$ имеет следующий вид:
+
+$$
+	A=\begin{pmatrix}a_{11} & ... & a_{1n}\\ a_{n1} & ... & a_{nn}\end{pmatrix}.
+$$\\
+Из предыдущей лекции известно, что
+
+$$
+	\mbox{div}f=\sum_{i=1}^n{\frac{\partial f_i}{\partial x_i}}=\sum_{i=1}^n{a_{ii}}=Tr(A).
+$$
+
+$$
+	\frac{dV_t}{dt}=\int\limits_{D_t}{Tr(A)}dx_t=Tr(A)\cdot \left(\int\limits_{D_t}{dx_t}\right)=(Tr(A))V_t \Rightarrow V_t=V_0e^{(Tr(A))t}
+$$\\
+Далее введем понятие производной по направлению, или \textit{производную Ли}\\
+Зафиксируем некоторый произвольный вектор $e=(l_1,l_2,...l_n)$ и функцию от $n$ переменных $V(x_1,...x_n)$, тогда получим:
+
+$$\frac{\partial V}{\partial e}=\sum_{i=1}^n{\frac{\partial V}{\partial x_i}}\cos(\widehat{x_i, e})$$\\
+или же что то же самое:
+
+$$
+	L_tV=(\nabla V(x), \overrightarrow{f}(x))
+$$
+
+$$
+	\nabla V(x_1,...,x_n)=\left(\frac{\partial V}{\partial x_1},\frac{\partial V}{\partial x_2},...,\frac{\partial V}{\partial x_n}\right)
+$$\\
+
+\begin{lemma}
+Пусть задана система:
+
+$$
+	\frac{dx}{dt}=f(x),x\in D \subset {\mathbb R}^n,
+$$\\
+где $V(x_1,...,x_n), x \in D$, $V \in C^1(D)$. Тогда, если $\dot{V}(x_1,...,x_n) \geq 0 \quad (\dot{V}(x_1,...,x_n) \leq 0)$, то функция $V(x)$ не убывает (не возрастает) на траекториях (вдоль траектории) системы.\\
+\begin{proof}
+Пусть $l$ --- некоторое направление,
+
+$$
+	\nabla V(x_1,...,x_n)=\left(\frac{\partial V}{\partial x_1},...,\frac{\partial V}{\partial x_n}\right) \implies \frac{\partial V}{\partial l}=\sum_{i=1}^n{\frac{\partial V}{\partial x_i} \cos(\widehat{x_i, l})}=(\nabla V,l)=|\nabla V||l|\cdot{}\cos(\widehat{x_i, l}),
+$$\\
+причем, максимум в данном выражении достигается, если $\cos(\widehat{\nabla V,l})=1$, а это значит, что $\cos(\nabla \widehat{V,l})=0+\pi k$ $\Rightarrow$ $l \approx k \nabla V$ \\
+$V(x_1,...,x_n)=const$ задает гиперповерхность размерности $\leq n-1$. Зафиксируем некоторую точку $x^0=(x_1^0,...,x_n^0)$, $V(x_1^0,...,x_n^0)=const$, и напишем уравнение гиперплоскости в этой точке:
+
+$$
+\sum_{i=1}^n{\frac{\partial V}{\partial x_i}(x^0)(x_i-x_i^0)}=0,
+$$
+
+$$
+\left(\frac{\partial V}{\partial x_i}(x^0),...,\frac{\partial V}{\partial x_n}(x^0)\right)=\partial V(x^0) \implies
+$$\\
+$\implies$ вектор $\nabla V(x^0)$ является нормалью к касательной плоскости.
+
+
+Пусть $x^0$ --- не особая точка, тогда пусть $\dot{V}=(\nabla V(x)f(x))\geq 0$, $(\widehat{\nabla V(x^0),f(x^0)})$ составляет острый угол.\\
+Вектор $\nabla V(x^0)$ --- направлен в сторону не убывания функции $V$, следовательно, в направлении $f$ $V$ также не убывает. Если $\dot{V} = 0:$, то $\gamma \in \varepsilon$, где $\gamma$ --- траектория системы.
+$\gamma$ - траектория системы, $V=const$ $\implies$ $V$ --- интеграл системы $\implies$ по теореме Ляпунова:
+\begin{itemize} 
+	\item $\dot{V}(x^0)>0 \implies$ функция $V$ растет вдоль траектории системы,\\
+	\item $\dot{V}(x^0)<0 \implies$ функция убывает вдоль траектории системы.
+\end{itemize}
+\end{proof}
+\end{lemma}
+
+\begin{example}
+	Рассмотрим следующий пример:
+	$$
+		\begin{cases}
+			\frac{dx_1}{dt}=x_2, \\
+			\frac{dx_2}{dt}= - x_1.\\
+		\end{cases} \implies V(x_1, x_2) = x_1^2 + x_2^2 = \mbox{const} \implies
+	$$\\
+
+	$$
+		\implies \dot{V}=\frac{\partial V}{\partial x_1}\dot{x_1}+\frac{\partial V}{\partial x_2}\dot{x_2}=2x_1x_2-2x_2x_1=0
+	$$\\
+
+\end{example}
+
+\begin{lemma}
+	
+	Если $a: \quad f(a) \ne 0$, то система
+	
+	$$
+		\frac{dx_i}{d t} = f_i: \quad \frac{dx_1}{f_1(x)} = ... = \frac{dx_n}{f_n(x)} = 0
+	$$\\
+	имеет ровно $(n-1)$ первых интегралов.\\
+	\begin{proof}
+	В некоторой точке существует замена переменных:
+	$$
+		\frac{dy_1}{dt}=0,\frac{dy_2}{dt}=0,...,\frac{dy_{n-1}}{dt}=0,\frac{dy_n}{dt}=1,
+	$$\\
+	Причем, не трудно видеть, что $y_1,y_2,...,y_{n-1}$ ---интегралы системы.\\
+	\end{proof}
+
+\end{lemma}
+
+\begin{example}
+	$$
+		\begin{cases}
+			m\ddot{x_1}=f_1(x), \\
+			m\ddot{x_2}=f_2(x), \\
+			m\ddot{x_3}=f_3(x) \\
+		\end{cases} \implies
+		\begin{cases}
+			\dot{x_i}=p_i,\\
+			\dot{p_i}=f_i(x).\\
+		\end{cases}	
+		i=1,2,3$$\\
+	
+	\begin{definition}
+		Система потенциальна, если существует  потенциал $U(x_1, ..., x_n)$:\\
+		$$
+			\frac{\partial U}{\partial X_i}=-f_i(x) \qquad i=1, ..., n
+		$$
+	\end{definition}
+	Потенциальная система всегда имеет ПИ:\\
+	$$
+		\mathcal{H}(x,p)=\sum_{i=1}^n{\frac{p_i^2}{2}+U(x)}
+	$$\\
+	Проверим это утверждение:\\
+$$\mathcal H(x,p)=\sum_{i=1}^n{\frac{\partial \mathcal H}{\partial x_i}\dot{x}}+\sum_{i=1}^n{\frac{\partial \mathcal H}{\partial p_i}p_i}=\sum_{i=1}^n{\frac{\partial U(x)}{\partial x_i}p_i}+\sum_{i=1}^n{p \cdot f_i(x)}\equiv 0$$
+	Все три системы лежат в множестве $\mathcal{H}(x, p) = \mbox{const}$ при $x_i(0) = x_i^0, \quad p_i(0) = p_i^0, \quad i = 1, ..., n$.
+	$$
+		\mathcal H(x^0,p^0)=\sum_{i=1}^3{\frac{p_i^{0\,2}}{2}+U(x^0)}
+	$$
+
+	\begin{definition}
+		Система называется \textit{Гамильтоновой}, если существует функция $\mathcal{H}$:
+
+		$$
+			\begin{cases}
+				\frac{dx_i}{dt}=\frac{\partial \mathcal H}{\partial p_i}, \\
+				\frac{dp_i}{dt}=-\frac{\partial \mathcal H}{\partial x_i}.\\
+			\end{cases} i = 1, ..., n
+		$$
+	\end{definition}
+	Рассмотрим случай $n=1 \implies \ddot{x}=f(x) \implies$
+	$$
+		\implies
+		\begin{cases}
+		\dot{x}=p, \\
+		\dot{p}=f(x).\\
+		\end{cases}
+	 \implies 
+	$$
+	$\implies$ существует потенциал $U(x) = \int f(x) dx$: $\frac{p^2}{2} + U(x) = \frac{p_0^2}{2} + U(x^0) = \mbox{const}$
+	$$
+	\begin{cases}
+		x(0)=x^0, \\
+		p(0)=p^0\\
+	\end{cases}
+	$$
+	все траектории системы находятся на $\frac{p^2}{2}+U(x)=\frac{p_0^2}{2}+U(x^0)=const$. Если содержит точку $(p,x)$, то точку $(-p,x)$ тоже содержит. Если $U'(x) \ne 0$, то по теореме о неявной функции имеем: $F(x,p)=\frac{p^2}{2}+U(x) = \mbox{const}$\\
+	Разрешим относительно $x$: пусть $x=\varphi(p)$ --- гладкая функция, тогда
+	$$
+		\frac{\frac{\partial F}{\partial p}}{\frac{\partial F}{\partial x}} = \frac{\partial F}{\partial x}=\frac{\partial U}{\partial x} \ne 0
+	$$
+	$\frac{\partial F}{\partial x} = \frac{\partial U}{\partial x} \ne 0 \implies U'(x) \ne 0,  U' = -f(x) \ne 0$. Тогда $p=0, f(x) = 0$ --- неподвижные точки. Пусть задана $U(x)$, пусть все траектории (не в особых точках) --- гладкие, $\frac{p^2}{2}+U(x)=const=E$, тогда $p=\pm \sqrt{2 (E-U(x))}$.\\
+
+\end{example}
+
+\begin{theorem}
+	В особые точки $f(x) = 0$ можно попасть только за бесконечное время.\\
+	\begin{proof}
+	$$
+		\frac{dx}{dt}=\pm \sqrt{2(E-U(x))} \qquad dt=\pm \frac{dx}{\sqrt{2(E-U(x))}} \qquad T=\int_a^b{\frac{dx}{\sqrt{2(E-U(x))}}}
+	$$
+	Пусть $U(x)=U(a)+U'(a)(x-a)+\bar{o}(|x-a|)$, тогда $ E-U(x)=E(x)-U(a)+f'(x)(x-a)+\bar{o}(x-a)$
+	$\sqrt{E-U(x)} \sim \sqrt{x-a}$, но при $f(x) = 0$ такой фокус не проходит, поэтому в особой точке интеграл $\int\limits_a^b \frac{1}{x-a} dx$ --- не сходится.\\
+	\end{proof}
+\end{theorem}
+
+\begin{example}
+	
+	Рассмотрим систему вида:
+	$$
+		\begin{cases}
+			\dot{x_1}=w_1x_2, \\
+			\dot{x_2}=-w_1x_1, \\
+			\dot{x_3}=w_2x_4, \\
+			\dot{x_4}=-w_2x_3\\
+		\end{cases}
+	$$
+	Введем координаты:
+	$$
+		\varphi_1=-\arctg \frac{x_2}{x_1}
+	$$ 
+	
+	$$
+		\varphi_2=-\arctg \frac{x_4}{x_3}
+	$$
+	
+	$$
+		\dot{\varphi_1}=-\frac{1}{1+(\frac{x_2}{x_1})^2} \cdot \dot {\left(\frac{x_2}{x_1}\right)}=-\frac{\dot{x_2}x_1-x_2\dot{x_1}}{(1+(\frac{x_2}{x_1})^2)x_1^2}=-\frac{-w_1x_1^2-w_1x_2^2}{x_1^2+x_2^2}=w_1 
+	$$
+	Аналогично получаем $\dot{\varphi_2}=w_2$, где $\varphi_1, \varphi_2$ --- главные углы системы:\\
+	$$
+		\begin{cases}
+			\dot{\varphi_1}=w_1, & \varphi_1(0)=\varphi_1^0, \\
+			\dot{\varphi_2}=w_2, & \varphi_2(0)=\varphi_2^0
+		\end{cases}
+	$$\\
+	Если мы не возвращаемся в исходную точку, то обмотка не полна, иначе есть период.
+
+\end{example}
+
+\begin{example}
+	Рассмотрим пример с маятником $\ddot{x}=-kx $, $k>0$:\\
+	$$
+		\begin{cases}		
+			\dot{x}=p, \\
+			\dot{p}=-kx \\
+		\end{cases}\\
+		\begin{cases}
+			\frac{du}{dx}=-f(x),\\ 
+			u(x)=\frac{k x^2}{2}
+		\end{cases}	
+	$$
+	Система для нелинейного маятника $\ddot{x}=-k\sin x$ имеет вид:
+	$$
+		\begin{cases}
+			\dot{x}=p, \\
+			\dot{p}=-k\sin x.\\
+		\end{cases}
+	$$
+	$$
+		U=k \int{\sin dx}=-k \cos x+c
+	$$\\
+	Пусть далее $M=diag(m_1,m_2,...,m_n) \qquad x(t)=(x_1(t),...,x_n(t))$,  $K= ||k_{ij}||,  k_{ij}=k_{ji}$, где $(Ku, u)>\gamma {||u||}^2$, $M\ddot{x}=-Kx$. Если матрица симметричная, то существкет $U$ (унитарное преобразование) такое, что:
+	$$
+		U^tkU=\Lambda=
+			\begin{pmatrix}
+				\lambda_{1} & & \\
+				& \ddots & \\
+				& & \lambda_{n}
+			\end{pmatrix}, \qquad \lambda_i \in \mathbb R
+	$$
+	Введем замену: $X=UY$. Тогда: 
+	$$
+		MU\ddot{Y}=-KUY \implies MU\ddot{Y}=UM\ddot{Y}=-KUY  \implies M\ddot{Y}=-(U^{-1}kU)Y=- \Lambda Y \implies
+	$$
+	
+	$$
+		\implies m_i\ddot{y_i}=-\lambda_iy_i, \quad i=1, ..., n \implies \ddot{y_i}=-\frac{\lambda_i}{m_i}y_i, \quad i=1, ..., n.
+	$$
+	
+	$$
+		\frac{\lambda_i}{m_i}=w_i^2 \implies \ddot{y_i}=-w_i^2y_i \implies 
+		\begin{cases}
+			\dot{y_i}=w_ip_i, \\
+			\dot{i}=-w_iy_i. \\
+		\end{cases}
+		\implies \varphi_i=-\arctg \frac{p_i}{y_i} \implies
+	$$
+	$$
+		\implies \dot{\varphi_i}=w_i, i=1, ..., n
+	$$
+	
+\end{example}
+
+\begin{example}
+	Рассмотрим теперь модель Земля-Луна-Солнце. Поведение этой модели можно описать при помощи системы:
+	$$
+		\begin{cases}
+			\dot{x_i}=p_i,\\
+			\dot{p_i}=f_i(x)+\varepsilon g_i(x{,} p),\\
+		\end{cases}
+	$$
+	Выпишем задачу Ньютона, докажем, что эта система является Гамильтоновой, и найдем ее потенциал.
+	$$
+		\overrightarrow{F}=\frac{-\gamma mM\overrightarrow{r}}{r^3}, r=|\overrightarrow{r}|=\sqrt{x^2+y^2}
+	$$
+	$$
+		\begin{cases}
+			m\ddot{x}=-\frac{kmx}{(x^2+y^2)^\frac{3}{2}},\\ 
+			m\ddot{y}=-\frac{kmy}{(x^2+y^2)^\frac{3}{2}},\\
+		\end{cases}
+		\qquad k=\gamma M
+	$$
+	Рассмотрим потенциал системы: $V(x,y) =\frac{\gamma mM}{r^2}$.
+	$$
+		\frac{\partial V}{\partial x}=\gamma mM(-\frac{1}{r^2}\frac{\partial r}{\partial x})=-\frac{\gamma mM}{(\sqrt{x^2+y^2})^2}\cdot \frac{2x}{2\sqrt{x^2+y^2}}=-\frac{\gamma mMx}{(x^2+y^2)^\frac{3}{2}}
+	$$
+	Это выражение равносильно системе:
+	$$
+	\left[
+	\begin{array}{ll}
+		\begin{cases}
+			\dot{x}=p, \\
+			\dot{p}=-\frac{kx}{(x^2+y^2)^{Y_2}}, \\
+		\end{cases}\\
+		\begin{cases}
+			\dot{y}=q, \\
+			\dot{q}=-\frac{ky}{(x^2+y^2)^{Y_2}},\\
+		\end{cases}
+	\end{array}
+	\right. \implies r=\frac{p}{1+\epsilon \cos \varphi}.\\
+$$
+\end{example}
+
+
+
+\section{Устойчивость по Ляпунову}
+Рассмотрим систему:
+$$
+	\begin{cases}
+		\dot x =  f(x),\\
+		x(0) = x^0,
+	\end{cases}
+$$
+где $x \in D$, $D \subset \mathbb{R}^n$. Пусть точка $a$: $f(a) = 0$, $a \in D$.
+\begin{definition}
+	Положение равновесия $a$ называется \textit{устойчивым по Ляпунову}, если $\forall \epsilon > 0 \,\exists \delta > 0: \forall \, |x^0-a|< \delta$ верно:  $|x(t;x^0)-a| < \epsilon\, \forall t>0$.
+\end{definition}
+
+\begin{definition}
+	Положение равновесия $a$ называется \textit{асимптотически устойчивым}, если 
+	\begin{enumerate}
+		\item Оно устойчиво по Ляпунову,
+		\item $\lim\limits_{t\rightarrow \infty} x(t, x^0 = a)$.
+	\end{enumerate}
+\end{definition}
