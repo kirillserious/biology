@@ -1,110 +1,3 @@
-\documentclass[oneside, final, 12pt]{article}
-
-\pagestyle{plain}
-
-\usepackage{a4wide}
-\usepackage[utf8]{inputenc}
-\usepackage[russian]{babel}
-\usepackage{vmargin}
-\setpapersize{A4}
-\setmarginsrb{2cm}{1.5cm}{1cm}{1.5cm}{5pt}{5mm}{5pt}{13mm}
-\usepackage{indentfirst}
-\usepackage{graphicx}
-
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{amsthm}
-\usepackage{amssymb}
-
-\newtheoremstyle{def}
-        {\topsep}
-        {\topsep}
-        {\normalfont}
-        {\parindent}
-        {\bfseries}
-        {.}
-        {.5em}
-        {}
-\theoremstyle{def}
-\newtheorem{definition}{Определение}[section]
-\newtheorem{example}{Пример}[section]
-
-\newtheoremstyle{th}
-        {\topsep}
-        {\topsep}
-        {\itshape}
-        {\parindent}
-        {\bfseries}
-        {.}
-        {.5em}
-        {}
-\theoremstyle{th}
-\newtheorem{theorem}{Теорема}[section]
-\newtheorem{lemma}{Лемма}[section]
-\newtheorem{assertion}{Утверждение}[section]
-
-\newtheoremstyle{rem}
-        {0.5\topsep}
-        {0.5\topsep}
-        {\normalfont}
-        {\parindent}
-        {\itshape}
-        {.}
-        {.5em}
-        {}
-\theoremstyle{rem}
-\newtheorem{remark}{Замечание}[section]
-
-% Новое доказательство
-\renewenvironment{proof}{\par Д о к а з а т е л ь с т в о.}{\hfill$\blacksquare$}
-
-% Нумерация рисунков и уравнений
-\numberwithin{figure}{section}
-\numberwithin{equation}{section}
-
-\def\Var{{\mathbb{V}\textrm{ar}}\,}
-\def\R{{\mathbb{R}}\,}
-\def\Cov{{\mathbb{C}\textrm{ov}}\,}
-\def\cntrKul{\hspace*{\fill}}
-
-
-
-\begin{document}
-
-\thispagestyle{empty}
-
-\begin{center}
-\ \vspace{-3cm}
-
-\includegraphics[width=0.5\textwidth]{pict/msu.pdf}\\
-{\scshape Московский государственный университет имени М.~В.~Ломоносова}\\
-Факультет вычислительной математики и кибернетики\\
-Кафедра системного анализа
-
-\vfill
-
-\vspace{5cm}
-
-{\Huge\bfseries <<БиоМат>>}
-\end{center}
-
-\vspace{3cm}
-
-\begin{flushright}
-    \large
-    \textit{Студент 415 группы}\\
-    И.~А.~Кулешов
-    \vspace{5mm}
-    
-    \textit{Руководитель практикума}\\
-    к.ф.-м.н, доцент П.~А.~Точилин
-\end{flushright}
-
-\vfill
-
-\begin{center}
-Москва, 2019
-\end{center}
 
 \section{Функция последования. Точки отображения Пуанкаре}
 
@@ -140,7 +33,7 @@
 	\begin{minipage}{0.6\textwidth}
 		Пусть $\gamma$ --- такая кривая, которая \newline 
 		\underline{не касается} траекторий (может пересекать)	
-		\begin{center} \includegraphics[width=0.7\textwidth]{pict/pict_1.png} \end{center} 
+		\begin{center} \includegraphics[width=0.7\textwidth]{ch8/pict/pict_1.png} \end{center} 
 				\begin{center}2 варианта: \end{center}  
 				1) траектория ушла \newline
 				2) траектория вернется. Тогда по непрерывности, \newline 
@@ -155,18 +48,18 @@
 		Достаточность: Докажем от противного. Пусть $a_1 =\psi(a_0) \neq a_0$ \newline
 		\begin{minipage}{0.35\textwidth} 
 			\vspace{3mm}
-			\begin{center} \includegraphics[width=0.9\textwidth]{pict/pict_2_1.png} \end{center} 
+			\begin{center} \includegraphics[width=0.9\textwidth]{ch8/pict/pict_2_1.png} \end{center} 
 			$$M_\text{Б}\text{ --- мешок Бендиксона}$$
 			Мы его не можем пересекать $\Rightarrow$ \newline 
 			\hspace*{15mm} не вернемся в $a_0$.
 		\end{minipage}
 			\hfill
 		\begin{minipage}{0.32\textwidth}
-			\begin{center} \includegraphics[width=1\textwidth]{pict/pict_2_2.png} \end{center} 
+			\begin{center} \includegraphics[width=1\textwidth]{ch8/pict/pict_2_2.png} \end{center} 
 				\qquad \qquad  Аналогично, \newline \hspace*{13mm} но вне мешка. \newline
 		\end{minipage}
 		\begin{minipage}{0.31\textwidth}
-			\begin{center} \includegraphics[width=1\textwidth]{pict/pict_2_3.png} 
+			\begin{center} \includegraphics[width=1\textwidth]{ch8/pict/pict_2_3.png} 
 				Направление поля  \newline поменялось, такого \newline не может быть. \end{center} 
 		\end{minipage}		
 		
@@ -194,10 +87,10 @@
 		\cntrKul Если есть $a^*: \psi(a^*)=a^* \Rightarrow$ траект. замкнута \cntrKul \newline 
 		\cntrKul Точка $a^*$ устойчивая, если $|\psi'(a^*)|<1$	\cntrKul \newline 
 		\cntrKul Точка $a^*$ неустойчивая, если $|\psi'(a^*)|> 1$ \cntrKul
-		\begin{center} \includegraphics[width=0.7\textwidth]{pict/pict_3_2.png} \end{center} 
+		\begin{center} \includegraphics[width=0.7\textwidth]{ch8/pict/pict_3_2.png} \end{center} 
 	\end{minipage}
 	\begin{minipage}{0.31\textwidth}
-		\begin{center} \includegraphics[width=0.8\textwidth]{pict/pict_3_1.png} \end{center} 
+		\begin{center} \includegraphics[width=0.8\textwidth]{ch8/pict/pict_3_1.png} \end{center} 
 		\cntrKul Если точка $a^*$ устойчивая, \cntrKul \newline
 		\cntrKul то есть устойчивый  \cntrKul \newline
 		 \cntrKul предельный цикл  \cntrKul
@@ -206,7 +99,7 @@
 	То же самое можно определить и в пространстве: \vspace{7mm}
 	
 	\begin{minipage}{0.4\textwidth}
-		\begin{center} \includegraphics[width=1\textwidth]{pict/pict_4.png} \end{center} 
+		\begin{center} \includegraphics[width=1\textwidth]{ch8/pict/pict_4.png} \end{center} 
 	\end{minipage}
 	\begin{minipage}{0.58\textwidth}
 		\cntrKul Предыдущее утв. $\ref{afKul}$ не верно в $\mathbb{R}^m$, но: \cntrKul \newline
@@ -240,7 +133,7 @@
 	\begin{proof}{ Начнем с леммы:} \vspace{3mm}
 	
 		\begin{minipage}{0.3\textwidth}
-			\begin{center} \includegraphics[width=0.5\textwidth]{pict/pict_5.png} \end{center} 
+			\begin{center} \includegraphics[width=0.5\textwidth]{ch8/pict/pict_5.png} \end{center} 
 		\end{minipage}
 		\begin{minipage}{0.58\textwidth}
 			$$\left.
@@ -260,7 +153,7 @@
 		\newline
 		
 		\begin{minipage}{0.3\textwidth}
-			\begin{center} \includegraphics[width=0.7\textwidth]{pict/pict_6.png} \vspace{3mm}\end{center} 
+			\begin{center} \includegraphics[width=0.7\textwidth]{ch8/pict/pict_6.png} \vspace{3mm}\end{center} 
 		\end{minipage}
 		\begin{minipage}{0.68\textwidth}
 			$$
@@ -349,7 +242,7 @@
 	\end{minipage}
 	\hfill
 	\begin{minipage}{0.3\textwidth}
-		\begin{center} \includegraphics[width=0.8\textwidth]{pict/pict_8.png} \vspace{5mm}\end{center} 
+		\begin{center} \includegraphics[width=0.8\textwidth]{ch8/pict/pict_8.png} \vspace{5mm}\end{center} 
 	\end{minipage}
 
 	\begin{proof}
@@ -366,11 +259,11 @@
 				\hfill
 			\begin{minipage}{0.24\textwidth}  \vspace{3mm}
 			
-				\begin{center} \includegraphics[width=0.9\textwidth]{pict/pict_9_1.png}\end{center} 
+				\begin{center} \includegraphics[width=0.9\textwidth]{ch8/pict/pict_9_1.png}\end{center} 
 			\end{minipage}
 			\begin{minipage}{0.24\textwidth} \vspace{4mm}
 			
-				\begin{center} \includegraphics[width=0.95\textwidth]{pict/pict_9_2.png} \vspace{5mm}\end{center} 
+				\begin{center} \includegraphics[width=0.95\textwidth]{ch8/pict/pict_9_2.png} \vspace{5mm}\end{center} 
 			\end{minipage}
 				
 		\end{itemize}		
@@ -389,7 +282,7 @@
 			\item Траектория проходит близко от $\bar{M}$
 			\newline
 			\begin{minipage}{0.3\textwidth}  \vspace{3mm}
-				\begin{center} \includegraphics[width=0.9\textwidth]{pict/pict_10.png}\end{center} 
+				\begin{center} \includegraphics[width=0.9\textwidth]{ch8/pict/pict_10.png}\end{center} 
 			\end{minipage}
 				\hfill
 			\begin{minipage}{0.6\textwidth} \vspace{4mm}
@@ -436,7 +329,7 @@
 								\item  $\bar{\bar{M}} \notin \bar{\gamma}$, $\tilde{a}\in \bar{\gamma}$. 
 								$\bar{\bar{M}}$ --- пред. и $\tilde{a}$ --- предельная, противоречие.						
 						\end{itemize}
-						\begin{center} \includegraphics[width=0.55\textwidth]{pict/pict_11.png} \vspace{5mm}\end{center} 
+						\begin{center}\includegraphics[width=0.55\textwidth]{ch8/pict/pict_11.png}\vspace{5mm}\end{center} 
 		\end{itemize}
 	
 	\end{proof}
@@ -455,7 +348,7 @@
 	\end{minipage} 
 		\hfill
 	\begin{minipage}{0.4\textwidth}	
-		\begin{center} \includegraphics[width=0.6\textwidth]{pict/pict_7.png} \vspace{5mm}\end{center} 
+		\begin{center} \includegraphics[width=0.6\textwidth]{ch8/pict/pict_7.png} \vspace{5mm}\end{center} 
 	\end{minipage} 	
 	
 	\begin{assertion} (Следствие)
@@ -494,14 +387,14 @@
 		Если $\dot{V}(x) = 0$, то доказано. \newline
 		Предположим, что $\dot{V}(x) > 0$\newline
 		\begin{minipage}{0.4\textwidth} \vspace{3mm}		
-			\begin{center} \includegraphics[width=0.6\textwidth]{pict/pict_13_1.png} \vspace{5mm}\end{center} 
+			\begin{center} \includegraphics[width=0.6\textwidth]{ch8/pict/pict_13_1.png} \vspace{5mm}\end{center} 
 		\end{minipage} 
 		\begin{minipage}{0.4\textwidth}	
 			$$V(x(t,\bar{x})) > V(\bar{x})\quad (*)$$
 		\end{minipage} 	
 		\newline
 		\begin{minipage}{0.4\textwidth} \vspace{3mm}		
-			\begin{center} \includegraphics[width=0.6\textwidth]{pict/pict_13_2.png} \vspace{5mm}\end{center} 
+			\begin{center} \includegraphics[width=0.6\textwidth]{ch8/pict/pict_13_2.png} \vspace{5mm}\end{center} 
 		\end{minipage} 
 		\begin{minipage}{0.4\textwidth}	
 			$$\begin{gathered}  x(t_k,x^0) \rightarrow \bar{x}, \quad \dot{V}(x)\geqslant 0 \\
@@ -551,6 +444,4 @@
 															\end{gathered}
  		$$
 	\end{example}
-	
 
-\end{document}
